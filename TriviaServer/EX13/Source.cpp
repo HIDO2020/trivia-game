@@ -5,8 +5,7 @@
 #include <exception>
 #include "Server.h"
 #include <thread>
-#include <vector>;
-#include <vector>;
+#include <vector>
 
 void handle_stop()
 {

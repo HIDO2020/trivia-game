@@ -8,15 +8,10 @@
 #include <string>
 #include <thread>
 #include <string>
-#include "LoginRequestHandler.h"
+#include "LoginManager.h"
 //#include "fileHandle.h"
 #include <fstream>
 
-#define USERSTART 5
-#define NAMESTART 2
-#define ASCI_TO_INT 48
-
-#define min(a,b) ((a) < (b) ? (a) : (b))
 
 class Server
 {
@@ -31,5 +26,5 @@ public:
 
 private:
 	SOCKET _serverSocket;
-	LoginRequestHandler _user;
+	LoginManager _user;
 };
