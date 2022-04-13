@@ -18,9 +18,8 @@
 std::queue <std::string> msg;
 
 
-Server::Server()
+Server::Server(IDataAccess& dataAccess) : _user(dataAccess)
 {
-
 	// this server use TCP. that why SOCK_STREAM & IPPROTO_TCP
 	// if the server use UDP we will use: SOCK_DGRAM & IPPROTO_UDP
 	_serverSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);

@@ -10,7 +10,7 @@ int callback_existUser(void* data, int argc, char** argv, char** azColName)
 	{
 		if (std::string(azColName[i]) == "EXIST")
 		{
-			std::cout << azColName[i] << " = " << argv[i] << std::endl;
+			//std::cout << azColName[i] << " = " << argv[i] << std::endl;
 			if (*argv[i] == '0')
 			{
 				exist = false;
@@ -72,7 +72,9 @@ void SqliteDatabase::AddNewUser(const std::string& name, const std::string& pass
 	int res;
 
 	sqlCommand = "INSERT INTO User VALUES(\"" + name + "\", \"" +
-		pass + "\", \"" + email  + "\";";
+		pass + "\", \"" + email  + "\");";
+
+	std::cout << sqlCommand << std::endl;
 
 	const char* sqlStatement = sqlCommand.c_str();
 

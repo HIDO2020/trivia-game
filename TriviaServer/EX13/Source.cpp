@@ -6,6 +6,8 @@
 #include "Server.h"
 #include <thread>
 #include <vector>
+#include "IDataAccess.h"
+#include "SqliteDatabase.h"
 
 void handle_stop()
 {
@@ -25,8 +27,9 @@ void handle_stop()
 
 int main()
 {
+	SqliteDatabase database;
 	WSAInitializer wsaInit;
-	Server myServer;
+	Server myServer(database);
 	std::thread connect(&Server::handle_messages, myServer, 8826);
 	std::thread stop(handle_stop);
 	std::this_thread::sleep_for(std::chrono::seconds(600));			//GET TIME OUT AFTER 10 MIN

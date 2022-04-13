@@ -16,7 +16,7 @@
 class Server
 {
 public:
-	Server();
+	Server(IDataAccess& dataAccess);
 	~Server();
 	void handle_messages(int port);
 	void serve(int port);
