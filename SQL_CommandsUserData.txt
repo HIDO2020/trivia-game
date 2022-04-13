@@ -1,0 +1,14 @@
+CREATE TABLE User(
+username TEXT PRIMARY KEY,
+user_password TEXT,
+email TEXT
+);
+
+INSERT INTO User
+VALUES ("nativ", "1234", "kol@gmail.com");
+
+SELECT count(username) AS EXIST, * FROM User
+WHERE username == "nativ";
+
+SELECT count(username) AS EXIST, * FROM User
+WHERE username == "nativ" and user_password == "1234";
