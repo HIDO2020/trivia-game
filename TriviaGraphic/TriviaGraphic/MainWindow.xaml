@@ -5,16 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TriviaGraphic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <StackPanel>
-        <Button
-            Name ="First"
-            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-            Content = "Stop"
-            Width = "130"
-            Height = "30"
-        />
+        Title="MainWindow" Height="600" Width="920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
 
-    </StackPanel>
-    
+    <Grid>
+        <Border 
+            Margin="10,10,10,10"
+            BorderThickness="1,1,1,1"
+            CornerRadius="25">
+            <Border.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#80AB82" Offset="3.5"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                </RadialGradientBrush>
+            </Border.Background>
+            <Grid 
+                Margin="230,180">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="29*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Content="Button" Margin="10,20,250,0" VerticalAlignment="Top" Height="164" BorderBrush="#FF46FF00" >
+
+                </Button>
+                <Button Content="Button" Margin="250,20,10,0" VerticalAlignment="Top" Height="164" BorderBrush="#FF46FF00">
+
+                </Button>
+            </Grid>
+
+
+
+        </Border>
+    </Grid>
+
 </Window>
