@@ -23,7 +23,16 @@ namespace TriviaGraphic
         public MainWindow()
         {
             InitializeComponent();
-            this.First.FontSize = 14;
+        }
+
+        private void TextBox_TextChanged()
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("I am circle button");
         }
     }
 }
