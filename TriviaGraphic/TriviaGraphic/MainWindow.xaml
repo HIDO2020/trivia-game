@@ -31,17 +31,19 @@
             </Grid.ColumnDefinitions>
             <Grid Height="230" Margin="150,140,190,-225" VerticalAlignment="Top" Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="16*"/>
+                    <RowDefinition Height="12*"/>
+                    <RowDefinition Height="13*"/>
+                    <RowDefinition Height="21*"/>
+                    <RowDefinition Height="54*"/>
+                    <RowDefinition Height="130*"/>
                 </Grid.RowDefinitions>
-                <Button Content="" Margin="10,0,250,-84" VerticalAlignment="Top" Height="164" BorderBrush="#FFEEEE" Grid.Row="2" >
+                <Button Content="" Margin="10,0,250,0" VerticalAlignment="Top" Height="164" BorderBrush="#FFEEEE" Grid.Row="3" Grid.RowSpan="2" >
                     <Button.Background>
                         <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\open_door.png"/>
                     </Button.Background>
 
                 </Button>
-                <Button Content="" Margin="250,0,10,-84" VerticalAlignment="Top" Height="164" BorderBrush="#DDEFBB" Grid.Row="2">
+                <Button Margin="250,0,10,0" VerticalAlignment="Top" Height="164" BorderBrush="#DDEFBB" Grid.Row="3" Grid.RowSpan="2">
                     <Button.Background>
                         <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\close_door.png"/>
                     </Button.Background>
@@ -50,44 +52,40 @@
             </Grid>
 
             <Grid HorizontalAlignment="Left" Height="210" Margin="0,340,0,-405" VerticalAlignment="Top" Width="855" Grid.ColumnSpan="2">
-                <Button Content="Button" HorizontalAlignment="Left" Height="55" Margin="10,145,0,0" VerticalAlignment="Top" Width="40"/>
-                <Ellipse Margin="70,70,640,30">
+
+                <Button Content="" HorizontalAlignment="Left" Height="55" Margin="15,145,0,0" VerticalAlignment="Top" Width="40" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\exit_icon.png"/>
+                    </Button.Background>
+                </Button>
+
+                <Ellipse Margin="65,80,665,15" Stroke="Black" RenderTransformOrigin="0.5,0.5">
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-0.309"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
                     <Ellipse.Fill>
-                        <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\close_door.png"/>
+                        <ImageBrush ImageSource="file:///E:/cyber/magshimim/Y2/c++/Semester B/trivia_nativ_ido/TriviaGraphic/TriviaGraphic/Pictures/single_user.png"/>
                     </Ellipse.Fill>
                 </Ellipse>
                 <Label Content="Hello, &#xD;&#xA;user1234" HorizontalAlignment="Left" FontSize="20" Height="65" Margin="195,80,0,0" VerticalAlignment="Top" Width="175"/>
-                <Button Content="Button" HorizontalAlignment="Left" Height="35" Margin="195,145,0,0" VerticalAlignment="Top" Width="55"/>
-                <Label Content="52%" FontSize="15" HorizontalAlignment="Left" Height="35" Margin="255,145,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="-0.857,0.333" FontWeight="Bold"/>
-                <Button Content="Click me!" Click="Button_Click" Margin="525,70,185,30">
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Grid>
-                                <Ellipse>
-                                    <Ellipse.Fill>
-                                        <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\close_door.png"/>
-                                    </Ellipse.Fill>
-                                </Ellipse>
-                            </Grid>
-                        </ControlTemplate>
-                    </Button.Template>
+                <Button Content="" HorizontalAlignment="Left" Height="35" Margin="195,145,0,0" VerticalAlignment="Top" Width="55" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\stats_icon.png"/>
+                    </Button.Background>
                 </Button>
-                <Button Content="Click me!" Click="Button_Click" Margin="670,70,50,30">
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Grid>
-                                <Ellipse>
-                                    <Ellipse.Fill>
-                                        <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\close_door.png"/>
-                                    </Ellipse.Fill>
-                                </Ellipse>
-                            </Grid>
-                        </ControlTemplate>
-                    </Button.Template>
+                <Button Content="" HorizontalAlignment="Left" Height="45" Margin="300,140,0,0" VerticalAlignment="Top" Width="50" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\trophy_icon.png"/>
+                    </Button.Background>
                 </Button>
+                <Label Content="52%" FontSize="20" HorizontalAlignment="Left" Height="35" Margin="250,145,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="-0.857,0.333" FontWeight="Bold"/>
+
             </Grid>
-
-
 
             <Label HorizontalContentAlignment="Center" Content="T R I V I A" Height="215" Margin="35,-30,35,-40" VerticalAlignment="Top" FontSize="150" FontWeight="Bold" Grid.ColumnSpan="2"/>
         </Grid>

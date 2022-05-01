@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace TriviaGraphic
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Create_Room.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Create_Room : Page
     {
-        public MainWindow()
+        public Create_Room()
         {
             InitializeComponent();
         }
-
     }
 }
