@@ -13,5 +13,6 @@ namespace TriviaGraphic
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

@@ -20,10 +20,21 @@ namespace TriviaGraphic
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        private void Create_Room_Click(object sender, RoutedEventArgs e)
+        {
+            Create_Room CreateRoomPage = new Create_Room();
+            this.Content = CreateRoomPage;
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

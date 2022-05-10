@@ -10,7 +10,6 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True">
-
     <Border 
             Margin="10,10,10,10"
             BorderThickness="1,1,1,1"
@@ -24,7 +23,7 @@
             </LinearGradientBrush>
         </Border.Background>
 
-        <Grid HorizontalAlignment="Left" Height="145" Margin="19,9,0,0" VerticalAlignment="Top" Width="855">
+        <Grid x:Name="page1" HorizontalAlignment="Left" Height="145" Margin="19,9,0,0" VerticalAlignment="Top" Width="855">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="8*"/>
                 <ColumnDefinition Width="163*"/>
@@ -37,13 +36,14 @@
                     <RowDefinition Height="54*"/>
                     <RowDefinition Height="130*"/>
                 </Grid.RowDefinitions>
+                
                 <Button Content="" Margin="10,0,250,0" VerticalAlignment="Top" Height="164" BorderBrush="#FFEEEE" Grid.Row="3" Grid.RowSpan="2" >
                     <Button.Background>
                         <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\open_door.png"/>
                     </Button.Background>
 
                 </Button>
-                <Button Margin="250,0,10,0" VerticalAlignment="Top" Height="164" BorderBrush="#DDEFBB" Grid.Row="3" Grid.RowSpan="2">
+                <Button x:Name="Create" Click="Create_Room_Click" Margin="250,0,10,0" VerticalAlignment="Top" Height="164" BorderBrush="#DDEFBB" Grid.Row="3" Grid.RowSpan="2">
                     <Button.Background>
                         <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\close_door.png"/>
                     </Button.Background>
@@ -53,7 +53,7 @@
 
             <Grid HorizontalAlignment="Left" Height="210" Margin="0,340,0,-405" VerticalAlignment="Top" Width="855" Grid.ColumnSpan="2">
 
-                <Button Content="" HorizontalAlignment="Left" Height="55" Margin="15,145,0,0" VerticalAlignment="Top" Width="40" BorderBrush="{x:Null}">
+                <Button Content="" Click="Exit_Click" HorizontalAlignment="Left" Height="55" Margin="15,145,0,0" VerticalAlignment="Top" Width="40" BorderBrush="{x:Null}">
                     <Button.Background>
                         <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\exit_icon.png"/>
                     </Button.Background>
