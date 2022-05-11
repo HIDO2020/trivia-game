@@ -25,6 +25,12 @@ namespace TriviaGraphic
             InitializeComponent();
         }
 
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow MainPage = new MainWindow();
+            this.Content = MainPage;
+        }
+
         private void Send_Click(object sender, RoutedEventArgs e)
         {
 

@@ -23,7 +23,7 @@
         </Border.Background>
         <Grid HorizontalAlignment="Left" Height="105" Margin="9,19,0,0" VerticalAlignment="Top" Width="880">
 
-            <Grid Height="305" Margin="195,135,0,-335" VerticalAlignment="Top" HorizontalAlignment="Left" Width="575">
+            <Grid Height="305" Margin="150,135,150,-335" VerticalAlignment="Top">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
@@ -31,13 +31,13 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <ListBox BorderThickness="0" HorizontalAlignment="Left"  Height="305" Margin="10,0,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" Opacity="100">
-                    <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\close_door.png" Height="60" Width="60"/>
+                    <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\room_name.png" Height="60" Width="60"/>
                     <Rectangle Height="10" Width="60"/>
-                    <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\close_door.png" Height="60" Width="60"/>
+                    <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\trio_user.png" Height="60" Width="60"/>
                     <Rectangle Height="10" Width="60"/>
-                    <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\close_door.png" Height="60" Width="60"/>
+                    <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\q_mark.png" Height="60" Width="60"/>
                     <Rectangle Height="10" Width="60"/>
-                    <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\close_door.png" Height="60" Width="60"/>
+                    <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\time_icon.png" Height="60" Width="60"/>
                 </ListBox>
                 <ListBox BorderThickness="0" HorizontalAlignment="Left" Height="305" Margin="90,0,0,0" VerticalAlignment="Top" Width="155" Background="{x:Null}" Opacity="100">
                     <Rectangle Height="5" Width="60"/>
@@ -49,7 +49,7 @@
                     <Label Content="Time For&#xA;Question:" Height="65" Width="135" Background="{x:Null}" FontWeight="Bold" FontSize="20" />
 
                 </ListBox>
-                <ListBox BorderThickness="0" HorizontalAlignment="Left" Height="305" Margin="280,0,0,0" VerticalAlignment="Top" Width="295" Background="{x:Null}">
+                <ListBox BorderThickness="0" HorizontalAlignment="Left" Height="305" Margin="295,0,0,0" VerticalAlignment="Top" Width="280" Background="{x:Null}">
                     <TextBox Height="40" Width="260" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent"/>
                     <Rectangle Height="50" Width="260"/>
                     <Slider Height="40" Width="260" Maximum="10" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True"/>
@@ -59,10 +59,11 @@
                     <Slider Height="40" Width="260" Maximum="120" Minimum="5" TickFrequency="5" IsSnapToTickEnabled="True"/>
                 </ListBox>
             </Grid>
-            <Border BorderBrush="#FFEEEE" BorderThickness="1" HorizontalAlignment="Left" Height="92" Margin="212,9,0,0" VerticalAlignment="Top" Width="93"/>
-            <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\close_door.png" Margin="213,10,577,0" VerticalAlignment="Top" Width="90"/>
-            <Label HorizontalContentAlignment="Center" Content="CREATE ROOM" Height="85" Margin="310,10,175,0" VerticalAlignment="Top" FontSize="50" FontWeight="Bold"/>
-            <Button BorderBrush="#FFDDEFBB" BorderThickness="2"  FontSize="20" Content="Send" Height="40" Margin="365,470,365,-405" VerticalAlignment="Top" Click="Send_Click" Background="White" FontWeight="Bold"/>
+            <Border BorderBrush="#000" BorderThickness="1" HorizontalAlignment="Left" Height="93" Margin="168,8,0,0" VerticalAlignment="Top" Width="93"/>
+            <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\close_door.png" Margin="170,9,620,0" VerticalAlignment="Top" Width="90"/>
+            <Label HorizontalContentAlignment="Center" Content="CREATE ROOM" Height="91" Margin="290,14,210,0" VerticalAlignment="Top" FontSize="50" FontWeight="Bold"/>
+            <Button BorderBrush="#FFDDEFBB" BorderThickness="3"  FontSize="20" Content="Send" Height="40" Margin="440,470,290,-405" VerticalAlignment="Top" Click="Send_Click" Background="White" FontWeight="Bold"/>
+            <Button BorderBrush="#FFF9E1E1" BorderThickness="3"  FontSize="20" Content="Back" Height="40" Margin="285,470,445,-405" VerticalAlignment="Top" Click="Back_Click" Background="White" FontWeight="Bold"/>
 
         </Grid>
 
