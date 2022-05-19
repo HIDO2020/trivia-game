@@ -32,15 +32,15 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="0*"/>
                 </Grid.ColumnDefinitions>
-                <ListBox BorderThickness="0" HorizontalAlignment="Left"  Height="305" Margin="80,0,0,0" VerticalAlignment="Top" Width="130" Background="{x:Null}" Opacity="100">
-                    <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\gamesPlayed.png" Height="90" Width="90"/>
+                <ListBox BorderThickness="0" HorizontalAlignment="Left"  Height="305" Margin="10,0,0,0" VerticalAlignment="Top" Width="105" Background="{x:Null}" Opacity="100">
+                    <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\trophy_icon.png" Height="90" Width="90"/>
                     <Rectangle Height="10" Width="60"/>
                     <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\correct_icon.png" Height="80" Width="80"/>
                     <Rectangle Height="10" Width="60"/>
                     <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\wrong_icon.png" Height="70" Width="70"/>
                     <Rectangle Height="10" Width="60"/>
                 </ListBox>
-                <ListBox BorderThickness="0" HorizontalAlignment="Left" Height="305" Margin="320,0,0,0" VerticalAlignment="Top" Width="210" Background="{x:Null}">
+                <ListBox BorderThickness="0" HorizontalAlignment="Left" Height="305" Margin="120,0,0,0" VerticalAlignment="Top" Width="210" Background="{x:Null}">
                     <Rectangle Height="20" Width="195"/>
                     <Label Content="user123" Height="40" Width="185" />
                     <Rectangle Height="55" Width="185"/>

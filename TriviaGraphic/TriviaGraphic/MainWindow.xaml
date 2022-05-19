@@ -36,7 +36,7 @@
                     <RowDefinition Height="54*"/>
                     <RowDefinition Height="130*"/>
                 </Grid.RowDefinitions>
-                
+
                 <Button Content="" Margin="10,0,250,0" VerticalAlignment="Top" Height="164" BorderBrush="#FFEEEE" Grid.Row="3" Grid.RowSpan="2" >
                     <Button.Background>
                         <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\open_door.png"/>
@@ -78,7 +78,7 @@
                         <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\stats_icon.png"/>
                     </Button.Background>
                 </Button>
-                <Button Content="" HorizontalAlignment="Left" Height="45" Margin="300,140,0,0" VerticalAlignment="Top" Width="50" BorderBrush="{x:Null}" Click="records_click">
+                <Button Content="" HorizontalAlignment="Left" Height="35" Margin="300,146,0,0" VerticalAlignment="Top" Width="45" BorderBrush="{x:Null}" Click="records_click">
                     <Button.Background>
                         <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\trophy_icon.png"/>
                     </Button.Background>
