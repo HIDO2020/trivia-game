@@ -37,10 +37,16 @@ namespace TriviaGraphic
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void stats_Click(object sender, RoutedEventArgs e)
         {
             Statistics StatisticsPage = new Statistics();
             this.Content = StatisticsPage;
+        }
+
+        private void records_click(object sender, RoutedEventArgs e)
+        {
+            Records RecordsPage = new Records();
+            this.Content = RecordsPage;
         }
     }
 }
