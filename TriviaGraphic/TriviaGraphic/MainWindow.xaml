@@ -12,17 +12,7 @@
         Background="Transparent"
         AllowsTransparency="True">
     <Border Background="White">
-        <Grid Margin="10,10,0,0">
-
-
-            <StackPanel HorizontalAlignment="Left" Height="580" VerticalAlignment="Top" Width="900">
-                <n:NavButton Text="Accounts" ImageSource="/Images/Accounts.png" NavUri="/Pages/Accounts.xaml"  />
-                <Button Content="Home" Click="Home_click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="40"/>
-                <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="40"/>
-                <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="40"/>
-            </StackPanel>
-                        
-        </Grid>
+        <Frame Source="/Pages/Home.xaml" NavigationUIVisibility="Hidden"/>
 
     </Border>
 
