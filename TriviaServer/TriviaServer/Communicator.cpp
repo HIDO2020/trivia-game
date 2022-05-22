@@ -96,7 +96,7 @@ void Communicator::bindAndListen(int port)
 		std::thread t(&Communicator::startHandleRequest, this, client_socket);
 		t.detach();
 	}
-	
+
 }
 
 /*
