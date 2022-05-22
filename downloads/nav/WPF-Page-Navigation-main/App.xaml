@@ -1,8 +1,8 @@
-﻿<Application x:Class="TriviaGraphic.App"
+﻿<Application x:Class="PageNavigation.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:TriviaGraphic"
-             StartupUri="Home.xaml">
+             xmlns:local="clr-namespace:PageNavigation"
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
          
     </Application.Resources>

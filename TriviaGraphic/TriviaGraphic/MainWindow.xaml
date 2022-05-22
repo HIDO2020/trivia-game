@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TriviaGraphic"
+        xmlns:n="clr-namespace:TriviaGraphic"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="920"
         WindowStyle="None"
@@ -15,7 +16,7 @@
 
 
             <StackPanel HorizontalAlignment="Left" Height="580" VerticalAlignment="Top" Width="900">
-
+                <n:NavButton Text="Accounts" ImageSource="/Images/Accounts.png" NavUri="/Pages/Accounts.xaml"  />
                 <Button Content="Home" Click="Home_click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="40"/>
                 <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="40"/>
                 <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="40"/>
