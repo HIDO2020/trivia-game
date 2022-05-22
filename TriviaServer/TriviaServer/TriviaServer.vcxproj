@@ -145,7 +145,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Communicator.h" />
+    <ClInclude Include="..\..\json.hpp" />
     <ClInclude Include="..\..\WSAInitializer.h" />
+    <ClInclude Include="ErrorResponse.h" />
+    <ClInclude Include="IRequestHandler.h" />
+    <ClInclude Include="JsonResponsePacketSerializer.h" />
+    <ClInclude Include="LoginRequestHandler.h" />
+    <ClInclude Include="LoginResponse.h" />
+    <ClInclude Include="SignupResponse.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

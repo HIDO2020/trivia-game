@@ -1,3 +1,5 @@
+
+#include "json.hpp"
 #include "Communicator.h"
 #include <exception>
 #include <iostream>
@@ -15,6 +17,7 @@
 
 //the queue of the messages
 std::queue <std::string> msg;
+using json = nlohmann::json;
 
 
 Communicator::Communicator()

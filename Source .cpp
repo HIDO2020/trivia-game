@@ -21,7 +21,7 @@ void handle_stop()
 			break;
 		}
 	}
-	system("STOP");
+	system("STOP"); //add an actual exit instead of a pop up message
 }
 
 int main()
