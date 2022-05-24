@@ -16,26 +16,24 @@ using System.Windows.Shapes;
 namespace TriviaGraphic
 {
     /// <summary>
-    /// Interaction logic for ConnectUser.xaml
+    /// Interaction logic for Register.xaml
     /// </summary>
-    public partial class ConnectUser : Page
+    public partial class Register : Page
     {
-        public ConnectUser()
+        public Register()
         {
             InitializeComponent();
         }
 
-        private void login_click(object sender, RoutedEventArgs e)
+        private void signup_click(object sender, RoutedEventArgs e)
         {
             Home HomePage = new Home();
             this.NavigationService.Navigate(HomePage);
         }
 
-        private void signup_click(object sender, RoutedEventArgs e)
+        private void back_click(object sender, RoutedEventArgs e)
         {
-
-            Register registerPage = new Register();
-            this.NavigationService.Navigate(registerPage);
+            this.NavigationService.GoBack();
         }
     }
 }
