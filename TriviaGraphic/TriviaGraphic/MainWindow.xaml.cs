@@ -25,15 +25,10 @@ namespace TriviaGraphic
         {
             InitializeComponent();
 
-            Home HomePage = new Home();
-            myFrame.NavigationService.Navigate(HomePage);
+            //Home HomePage = new Home();
+            ConnectUser loginPage = new ConnectUser();
+            myFrame.NavigationService.Navigate(loginPage);
 
-        }
-
-        private void Home_click(object sender, RoutedEventArgs e)
-        {
-            Home homePage = new Home();
-            this.Content = homePage;
         }
     }
 }

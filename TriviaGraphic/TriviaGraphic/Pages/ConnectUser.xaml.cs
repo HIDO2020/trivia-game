@@ -13,25 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PageNavigation.Pages
+namespace TriviaGraphic
 {
     /// <summary>
-    /// Interaction logic for Landing.xaml
+    /// Interaction logic for ConnectUser.xaml
     /// </summary>
-    public partial class Landing : Page
+    public partial class ConnectUser : Page
     {
-        public Landing()
+        public ConnectUser()
         {
             InitializeComponent();
         }
 
-        private void Grid_Click(object sender, RoutedEventArgs e)
+        private void login_click(object sender, RoutedEventArgs e)
         {
+            Home HomePage = new Home();
+            this.NavigationService.Navigate(HomePage);
+        }
 
-            var ClickedButton = e.OriginalSource as NavButton;
-
-            NavigationService.Navigate(ClickedButton.NavUri);
-
+        private void signup_click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

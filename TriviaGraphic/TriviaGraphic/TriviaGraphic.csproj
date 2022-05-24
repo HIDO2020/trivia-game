@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\ConnectUser.xaml.cs">
+      <DependentUpon>ConnectUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
@@ -64,6 +67,10 @@
     <Compile Include="Pages\Statistics.xaml.cs">
       <DependentUpon>Statistics.xaml</DependentUpon>
     </Compile>
+    <Page Include="Pages\ConnectUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Create_Room.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +132,24 @@
   <ItemGroup>
     <Folder Include="Pictures\" />
     <Folder Include="Themes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="open_door.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="close_door.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="exit_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="single_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="stats_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="trophy_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
