@@ -24,6 +24,10 @@ namespace TriviaGraphic
         public MainWindow()
         {
             InitializeComponent();
+
+            Home HomePage = new Home();
+            myFrame.NavigationService.Navigate(HomePage);
+
         }
 
         private void Home_click(object sender, RoutedEventArgs e)

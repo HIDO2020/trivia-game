@@ -28,24 +28,26 @@ namespace TriviaGraphic
         private void Create_Room_Click(object sender, RoutedEventArgs e)
         {
             Create_Room CreateRoomPage = new Create_Room();
-            this.Content = CreateRoomPage;
+            this.NavigationService.Navigate(CreateRoomPage);
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            //this.Close();
+            //NavigationService.Navigate(null);
+            //close
         }
 
         private void stats_Click(object sender, RoutedEventArgs e)
         {
             Statistics StatisticsPage = new Statistics();
-            this.Content = StatisticsPage;
+            this.NavigationService.Navigate(StatisticsPage);
         }
 
         private void records_click(object sender, RoutedEventArgs e)
         {
             Records RecordsPage = new Records();
-            this.Content = RecordsPage;
+            this.NavigationService.Navigate(RecordsPage);
         }
+
     }
 }

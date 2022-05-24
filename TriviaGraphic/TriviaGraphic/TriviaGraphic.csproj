@@ -55,11 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NavButton.cs" />
     <Compile Include="Pages\Records.xaml.cs">
       <DependentUpon>Records.xaml</DependentUpon>
     </Compile>
@@ -67,10 +65,6 @@
       <DependentUpon>Statistics.xaml</DependentUpon>
     </Compile>
     <Page Include="Pages\Create_Room.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pictures\" />
+    <Folder Include="Themes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

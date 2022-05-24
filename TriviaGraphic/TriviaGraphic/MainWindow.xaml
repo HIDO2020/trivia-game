@@ -11,9 +11,14 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True">
-    <Border Background="White">
-        <Frame Source="/Pages/Home.xaml" NavigationUIVisibility="Hidden"/>
+    <Border 
+        Margin="0,0,0,0"
+        BorderThickness="1,1,1,1"
+        CornerRadius="25">
+        <Frame x:Name="myFrame" NavigationUIVisibility="Hidden">
 
+        </Frame>
+        
     </Border>
 
 </Window>

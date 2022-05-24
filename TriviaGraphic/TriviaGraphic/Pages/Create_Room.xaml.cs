@@ -27,8 +27,7 @@ namespace TriviaGraphic
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow MainPage = new MainWindow();
-            this.Content = MainPage;
+            this.NavigationService.GoBack();
         }
 
         private void Send_Click(object sender, RoutedEventArgs e)
