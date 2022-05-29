@@ -140,23 +140,5 @@
     <Folder Include="Pictures\" />
     <Folder Include="Themes\" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="open_door.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="close_door.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="exit_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="single_user.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="stats_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="trophy_icon.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

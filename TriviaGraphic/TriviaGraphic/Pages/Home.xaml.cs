@@ -33,8 +33,7 @@ namespace TriviaGraphic
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(null);
-            //close
+            this.NavigationService.Content = null;
         }
 
         private void stats_Click(object sender, RoutedEventArgs e)
