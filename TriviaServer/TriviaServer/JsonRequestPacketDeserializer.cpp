@@ -13,7 +13,7 @@ SignupRequest JsonRequestPacketDeserializer::deserializeSignupRequest(std::vecto
 		request_vec.erase(request_vec.begin());
 	}
 	//std::string message(request_vec.begin(), request_vec.end());
-	json j = json::parse(request_vec.begin(), request_vec.end()); //gggg
+	json j = json::parse(request_vec.begin(), request_vec.end()); 
 	std::string message = j.dump(); //deser
 	return SignupRequest();
 }
