@@ -14,6 +14,6 @@ SignupRequest JsonRequestPacketDeserializer::deserializeSignupRequest(std::vecto
 	}
 	//std::string message(request_vec.begin(), request_vec.end());
 	json j = json::parse(request_vec.begin(), request_vec.end());
-	std::string message = j.dump();
+	std::string message = j.dump(); //deser
 	return SignupRequest();
 }
