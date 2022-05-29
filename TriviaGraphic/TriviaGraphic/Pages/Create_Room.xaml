@@ -24,12 +24,8 @@
         <Grid HorizontalAlignment="Left" Height="105" Margin="9,19,0,0" VerticalAlignment="Top" Width="880">
 
             <Grid Height="305" Margin="150,135,150,-335" VerticalAlignment="Top">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+                <TextBox Height="40" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" Margin="245,10,10,255"/>
+                <Rectangle Height="50" Width="250"/>
                 <ListBox BorderThickness="0" HorizontalAlignment="Left"  Height="305" Margin="10,0,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" Opacity="100">
                     <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\room_name.png" Height="60" Width="60"/>
                     <Rectangle Height="10" Width="60"/>
@@ -49,15 +45,25 @@
                     <Label Content="Time For&#xA;Question:" Height="65" Width="135" Background="{x:Null}" FontWeight="Bold" FontSize="20" />
 
                 </ListBox>
-                <ListBox BorderThickness="0" HorizontalAlignment="Left" Height="305" Margin="295,0,0,0" VerticalAlignment="Top" Width="280" Background="{x:Null}">
-                    <TextBox Height="40" Width="260" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent"/>
-                    <Rectangle Height="50" Width="260"/>
-                    <Slider Height="40" Width="260" Maximum="10" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True"/>
-                    <Rectangle Height="35" Width="260"/>
-                    <Slider Height="40" Width="260" Maximum="50" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True"/>
-                    <Rectangle Height="25" Width="260"/>
-                    <Slider Height="40" Width="260" Maximum="120" Minimum="5" TickFrequency="5" IsSnapToTickEnabled="True"/>
+                <ListBox BorderThickness="0" HorizontalAlignment="Left" Height="210" Margin="315,95,0,0" VerticalAlignment="Top" Width="265" Background="{x:Null}">
+
+                    <Slider x:Name="Players" Height="40" Width="250" Maximum="10" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True"/>
+                    <Rectangle Height="35" Width="250"/>
+                    <Slider x:Name="Questions" Height="40" Width="250" Maximum="50" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True"/>
+                    <Rectangle Height="25" Width="250"/>
+                    <Slider x:Name="Time" Height="40" Width="250" Maximum="120" Minimum="5" TickFrequency="5" IsSnapToTickEnabled="True"/>
                 </ListBox>
+                <Grid HorizontalAlignment="Left" Height="220" Margin="250,75,0,0" VerticalAlignment="Top" Width="60">
+                    <ListBox BorderThickness="0" HorizontalAlignment="Left" Height="220" VerticalAlignment="Top" Width="60" Background="{x:Null}">
+                        <Rectangle Height="10" Width="40"/>
+                        <Label Content="{Binding ElementName=Players, Path=Value}" ContentStringFormat="{}{0:#}" Height="35" Width="40" FontWeight="Bold" FontSize="18"/>
+                        <Rectangle Height="40" Width="40"/>
+                        <Label  Content="{Binding ElementName=Questions, Path=Value}" Height="35" Width="40" FontWeight="Bold" FontSize="18"/>
+                        <Rectangle Height="30" Width="40"/>
+                        <Label  Content="{Binding ElementName=Time, Path=Value}" Height="35" Width="40" FontWeight="Bold" FontSize="18"/>
+
+                    </ListBox>
+                </Grid>
             </Grid>
             <Border BorderBrush="#000" BorderThickness="1" HorizontalAlignment="Left" Height="93" Margin="168,8,0,0" VerticalAlignment="Top" Width="93"/>
             <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\close_door.png" Margin="170,9,620,0" VerticalAlignment="Top" Width="90"/>
