@@ -1,8 +1,11 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
 #include <map>
+
 
 typedef struct {
 	unsigned int _RoomId;
