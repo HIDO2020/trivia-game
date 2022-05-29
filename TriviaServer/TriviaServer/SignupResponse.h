@@ -1,5 +1,5 @@
 #pragma once
-struct SignupLoginResponse
+struct SignupResponse
 {
     unsigned int status;
 };

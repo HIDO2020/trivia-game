@@ -2,7 +2,8 @@
 #include <iostream>
 #include <string>
 
-struct LoginResponse
+struct ErrorResponse
 {
     std::string message;
 };
+
