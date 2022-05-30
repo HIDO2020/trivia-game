@@ -40,10 +40,10 @@
 
                 </ListBox>
                 <ListBox BorderThickness="0" HorizontalAlignment="Left" Height="180" Margin="275,0,0,0" VerticalAlignment="Top" Width="300" Background="{x:Null}">
-                    <Rectangle Height="15" Width="260"/>
-                    <TextBox Height="40" Width="260" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent"/>
-                    <Rectangle Height="50" Width="260"/>
-                    <TextBox Height="40" Width="260" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent"/>
+                    <Rectangle Height="25" Width="260"/>
+                    <TextBox x:Name="UsernameInput" Height="25" Width="260" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" FontSize="18" FontWeight="Bold"/>
+                    <Rectangle Height="65" Width="260"/>
+                    <PasswordBox x:Name="PasswordInput" Height="25" Width="260" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" FontSize="18" FontWeight="Bold"/>
 
                 </ListBox>
             </Grid>

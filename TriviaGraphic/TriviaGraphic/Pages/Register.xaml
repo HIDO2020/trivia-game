@@ -44,12 +44,12 @@
 
                 </ListBox>
                 <ListBox BorderThickness="0" HorizontalAlignment="Left" Height="255" Margin="275,0,0,0" VerticalAlignment="Top" Width="300" Background="{x:Null}">
-                    <Rectangle Height="15" Width="260"/>
-                    <TextBox Height="40" Width="260" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent"/>
-                    <Rectangle Height="35" Width="260"/>
-                    <TextBox Height="40" Width="260" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent"/>
-                    <Rectangle Height="35" Width="260"/>
-                    <TextBox Height="40" Width="260" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent"/>
+                    <Rectangle Height="25" Width="260"/>
+                    <TextBox x:Name="_Username" Height="25" Width="260" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" FontSize="18" FontWeight="Bold"/>
+                    <Rectangle Height="55" Width="260"/>
+                    <PasswordBox x:Name="_Password" Height="25" Width="260" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" FontSize="18" FontWeight="Bold"/>
+                    <Rectangle Height="45" Width="260"/>
+                    <TextBox x:Name="_Email" Height="25" Width="260" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" FontSize="18" FontWeight="Bold"/>
 
                 </ListBox>
             </Grid>

@@ -20,6 +20,9 @@ namespace TriviaGraphic
     /// </summary>
     public partial class ConnectUser : Page
     {
+        string username;
+        string password;
+
         public ConnectUser()
         {
             InitializeComponent();
@@ -27,6 +30,10 @@ namespace TriviaGraphic
 
         private void login_click(object sender, RoutedEventArgs e)
         {
+            username = UsernameInput.Text;
+            password = PasswordInput.Password;
+            Console.WriteLine(username + " " + password);
+            //MessageBox.Show(username + " " + password);
             Home HomePage = new Home();
             this.NavigationService.Navigate(HomePage);
         }

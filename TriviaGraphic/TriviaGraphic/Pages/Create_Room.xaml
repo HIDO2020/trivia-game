@@ -24,7 +24,7 @@
         <Grid HorizontalAlignment="Left" Height="105" Margin="9,19,0,0" VerticalAlignment="Top" Width="880">
 
             <Grid Height="305" Margin="150,135,150,-335" VerticalAlignment="Top">
-                <TextBox Height="40" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" Margin="245,10,10,255"/>
+                <TextBox x:Name="RoomNameInput" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" Margin="250,20,10,260" FontSize="18" FontWeight="Bold"/>
                 <Rectangle Height="50" Width="250"/>
                 <ListBox BorderThickness="0" HorizontalAlignment="Left"  Height="305" Margin="10,0,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" Opacity="100">
                     <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\room_name.png" Height="60" Width="60"/>

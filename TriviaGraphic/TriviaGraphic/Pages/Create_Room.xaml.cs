@@ -20,6 +20,8 @@ namespace TriviaGraphic
     /// </summary>
     public partial class Create_Room : Page
     {
+        string _roomName;
+
         public Create_Room()
         {
             InitializeComponent();
@@ -32,7 +34,9 @@ namespace TriviaGraphic
 
         private void Send_Click(object sender, RoutedEventArgs e)
         {
-
+            _roomName = RoomNameInput.Text;
+            Console.WriteLine(_roomName);
         }
+
     }
 }

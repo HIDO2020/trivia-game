@@ -20,6 +20,10 @@ namespace TriviaGraphic
     /// </summary>
     public partial class Register : Page
     {
+        string username;
+        string password;
+        string email;
+
         public Register()
         {
             InitializeComponent();
@@ -27,6 +31,11 @@ namespace TriviaGraphic
 
         private void signup_click(object sender, RoutedEventArgs e)
         {
+            username = _Username.Text;
+            password = _Password.Password;
+            email = _Email.Text;
+            Console.WriteLine(username + " " + password + " " + email);
+            //MessageBox.Show(username + " " + password + " " + email);
             Home HomePage = new Home();
             this.NavigationService.Navigate(HomePage);
         }
