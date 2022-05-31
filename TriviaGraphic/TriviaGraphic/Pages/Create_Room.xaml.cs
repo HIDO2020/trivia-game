@@ -21,6 +21,9 @@ namespace TriviaGraphic
     public partial class Create_Room : Page
     {
         string _roomName;
+        double _players;
+        double _questions;
+        double _time;
 
         public Create_Room()
         {
@@ -35,7 +38,13 @@ namespace TriviaGraphic
         private void Send_Click(object sender, RoutedEventArgs e)
         {
             _roomName = RoomNameInput.Text;
-            Console.WriteLine(_roomName);
+ 
+            _players = Players.Value;
+            _questions = Questions.Value;
+            _time = Time.Value;
+
+            Console.WriteLine(_roomName + " " + _players.ToString() + " " + _questions.ToString() + " " + _time.ToString());
+            //MessageBox.Show(_roomName + " " + _players.ToString() + " " + _questions.ToString() + " " + _time.ToString());
         }
 
     }
