@@ -27,10 +27,7 @@
     <ClCompile Include="sqlite3.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\dwonload\LoggedUser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\dwonload\SqliteDatabase.cpp">
+    <ClCompile Include="SqliteDatabase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,13 +41,10 @@
     <ClInclude Include="sqlite3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\dwonload\LoggedUser.h">
+    <ClInclude Include="IDataAccess.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\dwonload\IDataAccess.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\dwonload\SqliteDatabase.h">
+    <ClInclude Include="SqliteDatabase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

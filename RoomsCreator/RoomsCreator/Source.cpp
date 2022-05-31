@@ -1,8 +1,17 @@
 #include <iostream>
 #include "Room.h"
 #include "RoomManager.h"
+#include "IDataAccess.h"
+#include "SqliteDatabase.h"
+#include "sqlite3.h"
 
 int main()
 {
-	std::cout << "hello world";
+	SqliteDatabase db;
+	db.open();
+	//std::cout << db.getNumOfCorrectAnswers("nativ");
+	//std::cout << db.getPlayerAverageAnswerTime("ido");
+	std::vector<std::string> namesSave =  db.getHighScores();
+	for (auto i : namesSave)
+		std::cout << i << std::endl;
 }
