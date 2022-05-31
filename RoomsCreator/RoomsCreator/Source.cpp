@@ -11,7 +11,11 @@ int main()
 	db.open();
 	//std::cout << db.getNumOfCorrectAnswers("nativ");
 	//std::cout << db.getPlayerAverageAnswerTime("ido");
-	std::vector<std::string> namesSave =  db.getHighScores();
+	/*std::vector<std::string> namesSave =  db.getHighScores();
 	for (auto i : namesSave)
-		std::cout << i << std::endl;
+		std::cout << i << std::endl;*/
+	std::list<Question> quiz = db.getQuestions(5);
+	for (auto i : quiz) {
+		std::cout << i.getQuestion() << std::endl;
+	}
 }

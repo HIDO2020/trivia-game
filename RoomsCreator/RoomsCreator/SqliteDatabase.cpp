@@ -6,6 +6,12 @@ int numSave = 0;
 float dualSave = 0;
 std::vector<std::string> namesSave;
 
+//QUESTIONS
+std::string questionSave;
+std::string correctSave;
+std::vector<std::string> answersSave;
+std::list<Question> quizSave;
+
 //callback that check if ther feild exist bigger than 0
 int callback_existUser(void* data, int argc, char** argv, char** azColName)
 {
@@ -86,7 +92,6 @@ void SqliteDatabase::AddNewUser(const std::string& name, const std::string& pass
 		return;
 }
 
-
 //callback that check get data of int/float
 int callback_getData(void* data, int argc, char** argv, char** azColName)
 {
@@ -106,6 +111,65 @@ int callback_getData(void* data, int argc, char** argv, char** azColName)
 	std::cout << std::endl;
 	return 0;
 }
+
+//callback that check get data of int/float
+int callback_getQuestionsData(void* data, int argc, char** argv, char** azColName)
+{
+	for (int i = 0; i < argc; i++)
+	{
+		if (std::string(azColName[i]) == "Question")
+		{
+			questionSave = argv[i];
+			answersSave.clear();
+		}
+		if (std::string(azColName[i]) == "Answer1")
+		{
+			answersSave.push_back(argv[i]);
+		}
+		if (std::string(azColName[i]) == "Answer2")
+		{
+			answersSave.push_back(argv[i]);
+		}
+		if (std::string(azColName[i]) == "Answer3")
+		{
+			answersSave.push_back(argv[i]);
+		}
+		if (std::string(azColName[i]) == "Answer4")
+		{
+			answersSave.push_back(argv[i]);
+		}
+		if (std::string(azColName[i]) == "Correct")
+		{
+			correctSave = argv[i];
+			quizSave.push_back(Question(questionSave, answersSave, correctSave));
+		}
+	}
+	std::cout << std::endl;
+	return 0;
+}
+
+std::list<Question> SqliteDatabase::getQuestions(const int& amount)
+{
+	answersSave.clear();
+	quizSave.clear();
+
+	char** errMessage = nullptr;
+	std::string sqlCommand;
+	int res;
+
+	sqlCommand = "select * from Questions LIMIT " + std::to_string(amount) + "; ";
+
+	std::cout << sqlCommand << std::endl;
+
+	const char* sqlStatement = sqlCommand.c_str();
+
+	res = sqlite3_exec(db, sqlStatement, callback_getData, nullptr, errMessage);
+
+	return quizSave;
+}
+
+
+
 
 float SqliteDatabase::getPlayerAverageAnswerTime(const std::string& name)
 {
@@ -256,7 +320,7 @@ bool SqliteDatabase::open()
 		if (res != SQLITE_OK)
 			return false;
 
-		//Create User Table
+		//Create Stats Table
 		sqlStatement = R""""""(CREATE TABLE Stats(
 			username TEXT PRIMARY KEY,
 			games_played INTEGER,
@@ -271,6 +335,21 @@ bool SqliteDatabase::open()
 		res = sqlite3_exec(db, sqlStatement, nullptr, nullptr, errMessage);
 		if (res != SQLITE_OK)
 			return false;
+
+		//Create Question Table
+		sqlStatement = R""""""( CREATE TABLE "Questions" (
+			Question TEXT PRIMARY KEY,
+			Answer1 TEXT,
+			Answer2 TEXT,
+			Answer3 TEXT,
+			Answer4 TEXT,
+			Correct TEXT);
+			 )"""""";
+
+		res = sqlite3_exec(db, sqlStatement, nullptr, nullptr, errMessage);
+		if (res != SQLITE_OK)
+			return false;
+
 	}
 }
 

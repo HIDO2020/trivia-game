@@ -20,7 +20,7 @@ public:
 	void AddNewUser(const std::string& name, const std::string& pass, const std::string& email);
 
 	//QUIZ
-	//std::list<Question> getQuestions(const int& amount);
+	std::list<Question> getQuestions(const int& amount);
 
 	//STATS
 	float getPlayerAverageAnswerTime(const std::string& name);

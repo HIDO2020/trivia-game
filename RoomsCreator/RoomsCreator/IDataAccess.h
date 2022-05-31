@@ -2,6 +2,7 @@
 #include <list>
 #include <string>
 #include <vector>
+#include "Question.h"
 
 /*
 				  AVG OF CORRECT ANSWERS(INT)
@@ -20,7 +21,7 @@ public:
 	virtual void AddNewUser(const std::string& name, const std::string& pass, const std::string& email) = 0;
 
 	//QUIZ
-	//virtual std::list<Question> getQuestions(const int& amount) = 0;
+	virtual std::list<Question> getQuestions(const int& amount) = 0;
 
 	//STATS
 	virtual float getPlayerAverageAnswerTime(const std::string& name) = 0;
