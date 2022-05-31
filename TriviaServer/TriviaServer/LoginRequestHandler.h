@@ -5,9 +5,13 @@
 #include "ErrorResponse.h"
 #include "LoginResponse.h"
 #include "SignupResponse.h"
+#include "IRequestHandler.h"
 #include <vector>
 //#define SIGNUP false
 //#define LOGIN true
+class IRequestHandler;
+struct RequestResult;
+struct RequestInfo;
 
 class LoginRequestHandler : public IRequestHandler
 {

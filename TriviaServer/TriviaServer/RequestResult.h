@@ -4,9 +4,11 @@
 #include <string>
 #include <vector>
 #include <ctime>
+class IRequestHandler;
+
 
 struct RequestResult
 {
     std::vector<unsigned char> response;
-    IRequestHandler* newHandler;
+    IRequestHandler *newHandler;
 };

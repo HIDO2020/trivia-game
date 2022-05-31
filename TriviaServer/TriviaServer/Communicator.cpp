@@ -1,6 +1,12 @@
 
+#include "RequestInfo.h"
+#include "LoginRequestHandler.h"
+#include "JsonRequestPacketDeserializer.h"
 #include "json.hpp"
 #include "Communicator.h"
+#include "SignupRequest.h"
+#include "LoginRequest.h"
+
 #include <exception>
 #include <iostream>
 #include <string>
@@ -10,9 +16,10 @@
 #include <mutex>
 #include <fstream>
 #include <iomanip>
-#include <algorithm>    
+#include <algorithm>  
 #include <vector>
 #include <map>
+#include <ctime>
 #include <fstream>
 
 //the queue of the messages
@@ -41,6 +48,7 @@ Communicator::~Communicator()
 	}
 	catch (...) {}
 }
+
 
 void Communicator::handle_messages(int port)
 {
@@ -85,6 +93,7 @@ void Communicator::bindAndListen(int port)
 
 	while (true)
 	{
+		IRequestHandler* handle; //???
 		// the main thread is only accepting clients 
 		// and add then to the list of handlers
 		std::cout << "Waiting for client connection request" << std::endl;
@@ -96,6 +105,7 @@ void Communicator::bindAndListen(int port)
 
 		std::cout << "Client accepted. Server and client can speak" << std::endl;
 		// the function that handle the conversation with the client
+		m_clients.insert(std::pair<SOCKET, IRequestHandler*>(client_socket, handle));
 		std::thread t(&Communicator::startHandleRequest, this, client_socket);
 		t.detach();
 	}
@@ -115,19 +125,63 @@ std::string Communicator::convertToString(char* a, int start, int end)
 	return s;
 }
 
+void Communicator::handleNewClient(SOCKET clientSocket)
+{
+	std::vector<unsigned char> vec;
+	LoginRequestHandler handle;
+	RequestInfo info;
+	RequestResult res;
+	SignupRequest sign;
+	LoginRequest login_;
+	int len, count = 0;
+	std::cout << "hi";
+	while (true)
+	{
+		char m[LEN_OF_MESSAGE]{};
+		int x = recv(clientSocket, m, LEN_OF_MESSAGE, 0);
+
+		if (x == -1)
+		{
+			std::cout << "client has disconnected!" << std::endl;
+			break;
+		}
+
+		//making request info struct
+		info.receivalTime = time(NULL);
+		info.id = m[0] - '0';
+		vec.insert(vec.begin(), std::begin(m), std::end(m));
+		info.buffer = vec;
+		vec.clear();
+
+		res = handle.handleRequest(info);
+		vec = res.response;
+
+		std::cout << "received: " << m << std::endl;
+
+		if (info.id == 1)
+			sign = JsonRequestPacketDeserializer::deserializeSignupRequest(info.buffer);
+		else if (info.id == 2)
+			login_ = JsonRequestPacketDeserializer::deserializeLoginRequest(info.buffer);
+
+				//convert to char vector in order to send the message
+		std::vector<char> newOne = std::vector<char>(vec.begin(), vec.end());
+		send(clientSocket, &newOne[0], vec.size(), 0);
+	}
+}
+
 
 void Communicator::startHandleRequest(SOCKET clientSocket)
 {
 	std::cout << "NEW CLIENT\n";
 	std::string msg_socket = std::to_string(clientSocket);
 	int len = 0;
-	char m[LEN_OF_MESSAGE];
+	char m[LEN_OF_MESSAGE]{};
 
-	while (true)
-	{
-		msg.push(msg_socket + "hello");
-		recv(clientSocket, m, LEN_OF_MESSAGE, 0);
-		len = (m[3] - 48) * 10 + (m[4] - 48);		//ASCI to len of name
-		std::cout << "receaved: " << m << std::endl;
-	}
+	msg.push(msg_socket + "hello");
+	recv(clientSocket, m, LEN_OF_MESSAGE, 0);
+	//len = (m[3] - 48) * 10 + (m[4] - 48);		//ASCI to len of name
+	std::cout << "received: " << m << std::endl; //nativ wrote "receaved" -_-
+
+	handleNewClient(clientSocket);
+
 }
