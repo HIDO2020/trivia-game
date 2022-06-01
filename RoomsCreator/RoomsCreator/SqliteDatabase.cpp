@@ -92,25 +92,6 @@ void SqliteDatabase::AddNewUser(const std::string& name, const std::string& pass
 		return;
 }
 
-//callback that check get data of int/float
-int callback_getData(void* data, int argc, char** argv, char** azColName)
-{
-	for (int i = 0; i < argc; i++)
-	{
-		if (std::string(azColName[i]) == "DataINT")
-		{
-			//std::cout << azColName[i] << " = " << argv[i] << std::endl;
-			numSave = std::stoi(argv[i]);;
-		}
-		if (std::string(azColName[i]) == "DataFLOAT")
-		{
-			//std::cout << azColName[i] << " = " << argv[i] << std::endl;
-			dualSave = std::stof(argv[i]);;
-		}
-	}
-	std::cout << std::endl;
-	return 0;
-}
 
 //callback that check get data of int/float
 int callback_getQuestionsData(void* data, int argc, char** argv, char** azColName)
@@ -157,19 +138,36 @@ std::list<Question> SqliteDatabase::getQuestions(const int& amount)
 	std::string sqlCommand;
 	int res;
 
-	sqlCommand = "select * from Questions LIMIT " + std::to_string(amount) + "; ";
+	sqlCommand = "select * from Questions ORDER BY RANDOM() LIMIT " + std::to_string(amount) + "; ";
 
 	std::cout << sqlCommand << std::endl;
 
 	const char* sqlStatement = sqlCommand.c_str();
 
-	res = sqlite3_exec(db, sqlStatement, callback_getData, nullptr, errMessage);
+	res = sqlite3_exec(db, sqlStatement, callback_getQuestionsData, nullptr, errMessage);
 
 	return quizSave;
 }
 
-
-
+//callback that check get data of int/float
+int callback_getData(void* data, int argc, char** argv, char** azColName)
+{
+	for (int i = 0; i < argc; i++)
+	{
+		if (std::string(azColName[i]) == "DataINT")
+		{
+			//std::cout << azColName[i] << " = " << argv[i] << std::endl;
+			numSave = std::stoi(argv[i]);;
+		}
+		if (std::string(azColName[i]) == "DataFLOAT")
+		{
+			//std::cout << azColName[i] << " = " << argv[i] << std::endl;
+			dualSave = std::stof(argv[i]);;
+		}
+	}
+	std::cout << std::endl;
+	return 0;
+}
 
 float SqliteDatabase::getPlayerAverageAnswerTime(const std::string& name)
 {
