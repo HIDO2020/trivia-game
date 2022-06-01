@@ -182,7 +182,8 @@ float SqliteDatabase::getPlayerAverageAnswerTime(const std::string& name)
 	const char* sqlStatement = sqlCommand.c_str();
 
 	res = sqlite3_exec(db, sqlStatement, callback_getData, nullptr, errMessage);
-	return dualSave;
+	float value = round(dualSave * 100) / 100;
+	return value;
 }
 
 int SqliteDatabase::getNumOfCorrectAnswers(const std::string& name)
@@ -271,7 +272,7 @@ std::vector<std::string> SqliteDatabase::getHighScores()
 	std::string sqlCommand;
 	int res;
 
-	sqlCommand = "SELECT username FROM Stats ORDER BY score DESC; ";
+	sqlCommand = "SELECT username FROM Stats ORDER BY score DESC LIMIT 5; ";
 
 	std::cout << sqlCommand << std::endl;
 
