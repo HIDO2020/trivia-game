@@ -20,19 +20,35 @@ Room::~Room()
 	this->m_users.clear();
 }
 
-void Room::addUser(std::string user)
+void Room::addUser(LoggedUser user)
 {
-	this->m_users.push_back(user);
+	this->m_users.push_back(user.getUsername());
 }
 
-void Room::removeUser(std::string user)
+void Room::removeUser(LoggedUser user)
 {
-	this->m_users.erase(std::remove(this->m_users.begin(), this->m_users.end(), user), this->m_users.end());
+	int j = 0;
+	int size = m_users.size();
+	LoggedUser l(user.getUsername());
+
+	for (auto& i : m_users)
+	{
+		if (i.getUsername() == user.getUsername())
+		{
+			m_users.erase(m_users.begin() + j);
+			return;
+		}
+		j++;
+	}
+
 }
 
 std::vector<std::string> Room::getAllUsers()
 {
-	return this->m_users;
+	std::vector<std::string> copy;
+	for (auto i : this->m_users)
+		copy.push_back(i.getUsername());
+	return copy;
 }
 
 unsigned int Room::getRoomState()

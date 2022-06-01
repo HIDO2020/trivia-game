@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <map>
+#include "LoggedUser.h"
 
 
 typedef struct {
@@ -20,14 +21,16 @@ class Room
 public:
 	Room(unsigned int RoomId, std::string RoomName, unsigned int MaxPlayers, unsigned int AvgTime, unsigned int Active);
 	~Room();
-	void addUser(std::string user);
-	void removeUser(std::string user);
+
+	void addUser(LoggedUser user);
+	void removeUser(LoggedUser user);
 	std::vector<std::string> getAllUsers();
+
 	unsigned int getRoomState();
 	RoomData getRoomData();
 
 private:
 	RoomData m_metadata;
-	std::vector<std::string> m_users;		//change to LoggedUser
+	std::vector<LoggedUser> m_users;		//change to LoggedUser
 
 };

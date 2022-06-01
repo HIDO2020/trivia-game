@@ -293,7 +293,7 @@ bool SqliteDatabase::open()
 	if (res != SQLITE_OK) {
 		db = nullptr;
 		std::cout << "Failed to open DB" << std::endl;
-		return -1;
+		return false;
 	}
 	if (file_exist == 0)
 	{
@@ -350,6 +350,7 @@ bool SqliteDatabase::open()
 			return false;
 
 	}
+	return true;
 }
 
 void SqliteDatabase::close()
