@@ -7,12 +7,12 @@
 #include <stdlib.h>
 #include <thread>
 #include <vector>;
-#include <vector>;
-#include "ErrorResponse.h"
+#include "sqlite3.h"
+#include "IDataAccess.h"
+#include "SqliteDatabase.h"
 #include "JsonResponsePacketSerializer.h"
 #include "JsonRequestPacketDeserializer.h"
-#include "LoginRequest.h"
-#include "SignupRequest.h"
+
 
 void handle_stop()
 {
@@ -31,13 +31,16 @@ void handle_stop()
 
 int main()
 {
+	SqliteDatabase dataAccess;
+	//.open();
+	RequestHandlerFactory fact(dataAccess);
 	SignupResponse message1;
 	message1.status = 100;
 	std::vector<unsigned char> test = JsonResponsePacketSerializer::serializeResponse(message1);
 
 	//SignupRequest test2 = JsonRequestPacketDeserializer::deserializeSignupRequest(test);
 	WSAInitializer wsaInit;
-	Communicator myServer;
+	Communicator myServer(dataAccess, fact);
 	std::thread connect(&Communicator::handle_messages, myServer, 8826);
 	std::thread stop(handle_stop);
 	std::this_thread::sleep_for(std::chrono::seconds(600));			//GET TIME OUT AFTER 10 MIN

@@ -1,21 +1,29 @@
 #pragma once
-#include "RequestInfo.h"
-#include "RequestResult.h"
 #include "JsonResponsePacketSerializer.h"
-#include "ErrorResponse.h"
-#include "LoginResponse.h"
-#include "SignupResponse.h"
+#include "requestStruct.h"
+#include "responseStruct.h"
 #include "IRequestHandler.h"
+#include "LoginManager.h"
+#include "RequestHandlerFactory.h"
+#include "JsonRequestPacketDeserializer.h"
 #include <vector>
 //#define SIGNUP false
 //#define LOGIN true
 class IRequestHandler;
+class RequestHandlerFactory;
 struct RequestResult;
 struct RequestInfo;
 
 class LoginRequestHandler : public IRequestHandler
 {
 public:
+	LoginRequestHandler(RequestHandlerFactory fact, LoginManager man);
+	~LoginRequestHandler();
 	virtual bool isRequestRelevant(RequestInfo info);
 	virtual RequestResult handleRequest(RequestInfo info);
+private:
+	LoginManager& m_loginManager;
+	RequestHandlerFactory& m_handleFactory;
+	RequestResult login(RequestInfo info);
+	RequestResult signup(RequestInfo info);
 };

@@ -1,6 +1,6 @@
 #pragma once
-#include "LoginRequest.h"
-#include "SignupRequest.h"
+#include "requestStruct.h"
+#include "responseStruct.h"
 #include <fstream>
 #include <vector>
 #include <bitset>

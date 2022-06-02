@@ -2,12 +2,11 @@
 //#pragma comment (lib, "ws2_32.lib")
 #include "Communicator.h"
 #include "json.hpp"
-#include "ErrorResponse.h"
-#include "LoginResponse.h"
-#include "SignupResponse.h"
+#include "requestStruct.h"
+#include "responseStruct.h"
 #include "vector"
 using json = nlohmann::json;
-enum codes{Error, signup, login};
+enum codes{Error_, signup_, login_};
 
 class JsonResponsePacketSerializer
 {

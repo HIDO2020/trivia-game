@@ -1,6 +1,6 @@
 #pragma once
-#include "RequestInfo.h"
-#include "RequestResult.h"
+#include "requestStruct.h"
+#include "responseStruct.h"
 struct RequestResult;
 struct RequestInfo;
 //RequestInfo info;

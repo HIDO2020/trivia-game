@@ -19,7 +19,10 @@ print(s.recv(1024).decode())
 
 # signup:
 s.sendall(b'11000{"username": "user1", "password": "1234", "email": "user1@gmail.com"}')
-print(s.recv(1024).decode())
+temp=s.recv(1024)
+#temp[0]= int.from_bytes(temp[0], "big")
+
+print(temp)
 
 # close the connection
 s.close()

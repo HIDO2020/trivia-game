@@ -1,14 +1,21 @@
 #pragma once
+#ifndef COMMUNICATOR_H
+#define COMMUNICATOR_H
 
+#include "RequestHandlerFactory.h"
 #include <WinSock2.h>
 #include <Windows.h>
-#include <exception>
 #include "IRequestHandler.h"
 #include <iostream>
 #include <string>
-#include <thread>
-#include <fstream>
+//#include <thread>
 #include <map>
+//#include "responseStruct.h"
+//#include "JsonRequestPacketDeserializer.h"
+#include "IDataAccess.h"
+//#include "json.hpp"
+//#include <queue>
+class RequestHandlerFactory;
 
 #define USERSTART 5
 #define NAMESTART 2
@@ -20,7 +27,7 @@
 class Communicator
 {
 public:
-	Communicator();
+	Communicator(IDataAccess& dataAccess, RequestHandlerFactory& fact);
 	~Communicator();
 	void handle_messages(int port);
 	void startHandleRequest(SOCKET clientSocket);
@@ -31,5 +38,7 @@ private:
 	void handleNewClient(SOCKET clientSocket);
 
 	std::map<SOCKET, IRequestHandler*> m_clients;
+	RequestHandlerFactory& m_handlerFactory;
 	SOCKET _serverSocket;
 };
+#endif

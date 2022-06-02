@@ -4,21 +4,21 @@ using json = nlohmann::json;
 std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(ErrorResponse err)
 {
 	json j = { {"message", err.message} };
-	unsigned char code = (unsigned char)Error;
+	unsigned char code = (unsigned char)Error_;
 	return JsonResponsePacketSerializer::helper(j, code);
 }
 
 std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(SignupResponse sign)
 {
 	json j = { {"status", sign.status} };
-	unsigned char code = (unsigned char)signup;
+	unsigned char code = (unsigned char)signup_;
 	return JsonResponsePacketSerializer::helper(j, code);
 }
 
 std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(LoginResponse log)
 {
 	json j = { {"status", log.status} };
-	unsigned char code = (unsigned char)login;
+	unsigned char code = (unsigned char)login_;
 	return JsonResponsePacketSerializer::helper(j, code);
 }
 

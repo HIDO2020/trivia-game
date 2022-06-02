@@ -1,35 +1,17 @@
-
-#include "RequestInfo.h"
-#include "LoginRequestHandler.h"
+#include "Communicator.h"
+#include <thread>
+#include "responseStruct.h"
+#include "JsonRequestPacketDeserializer.h"
 #include "JsonRequestPacketDeserializer.h"
 #include "json.hpp"
-#include "Communicator.h"
-#include "SignupRequest.h"
-#include "LoginRequest.h"
-
-#include <exception>
-#include <iostream>
-#include <string>
-#include <thread>
-#include <string>
 #include <queue>
-#include <mutex>
-#include <fstream>
-#include <iomanip>
-#include <algorithm>  
-#include <vector>
-#include <map>
-#include <ctime>
-#include <fstream>
-
 //the queue of the messages
 std::queue <std::string> msg;
 using json = nlohmann::json;
 
 
-Communicator::Communicator()
+Communicator::Communicator(IDataAccess& dataAccess, RequestHandlerFactory& fact) : m_handlerFactory(fact)
 {
-
 	// this server use TCP. that why SOCK_STREAM & IPPROTO_TCP
 	// if the server use UDP we will use: SOCK_DGRAM & IPPROTO_UDP
 	_serverSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -128,11 +110,11 @@ std::string Communicator::convertToString(char* a, int start, int end)
 void Communicator::handleNewClient(SOCKET clientSocket)
 {
 	std::vector<unsigned char> vec;
-	LoginRequestHandler handle;
+	LoginRequestHandler* log_handler = m_handlerFactory.createLoginRequestHandler();
 	RequestInfo info;
 	RequestResult res;
 	SignupRequest sign;
-	LoginRequest login_;
+	LoginRequest login;
 	int len, count = 0;
 	std::cout << "hi";
 	while (true)
@@ -153,15 +135,15 @@ void Communicator::handleNewClient(SOCKET clientSocket)
 		info.buffer = vec;
 		vec.clear();
 
-		res = handle.handleRequest(info);
+		res = log_handler->handleRequest(info);
 		vec = res.response;
 
 		std::cout << "received: " << m << std::endl;
 
-		if (info.id == 1)
+		if (info.id == signup_)
 			sign = JsonRequestPacketDeserializer::deserializeSignupRequest(info.buffer);
-		else if (info.id == 2)
-			login_ = JsonRequestPacketDeserializer::deserializeLoginRequest(info.buffer);
+		else if (info.id == login_)
+			login = JsonRequestPacketDeserializer::deserializeLoginRequest(info.buffer);
 
 				//convert to char vector in order to send the message
 		std::vector<char> newOne = std::vector<char>(vec.begin(), vec.end());
