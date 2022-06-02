@@ -110,7 +110,8 @@ std::string Communicator::convertToString(char* a, int start, int end)
 void Communicator::handleNewClient(SOCKET clientSocket)
 {
 	std::vector<unsigned char> vec;
-	LoginRequestHandler* log_handler = m_handlerFactory.createLoginRequestHandler();
+	//LoginRequestHandler* log_handler = m_handlerFactory.createLoginRequestHandler();
+	
 	RequestInfo info;
 	RequestResult res;
 	SignupRequest sign;
