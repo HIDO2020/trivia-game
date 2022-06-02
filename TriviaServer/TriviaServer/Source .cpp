@@ -34,11 +34,11 @@ int main()
 {
 	SqliteDatabase dataAccess;
 	//.open();
-	StatisticsManager s1(dataAccess);
+	//StatisticsManager s1(dataAccess);
 
-	std::vector<std::string> namesSave = s1.getUserStatistics("nativ");
+	/*std::vector<std::string> namesSave = s1.getUserStatistics("nativ");
 	for (auto i : namesSave)
-		std::cout << i << std::endl;
+		std::cout << i << std::endl;*/
 
 	RequestHandlerFactory fact(dataAccess);
 	SignupResponse message1;
