@@ -12,6 +12,7 @@
 #include "SqliteDatabase.h"
 #include "JsonResponsePacketSerializer.h"
 #include "JsonRequestPacketDeserializer.h"
+#include "StatisticsManager.h"
 
 
 void handle_stop()
@@ -33,6 +34,12 @@ int main()
 {
 	SqliteDatabase dataAccess;
 	//.open();
+	StatisticsManager s1(dataAccess);
+
+	std::vector<std::string> namesSave = s1.getUserStatistics("nativ");
+	for (auto i : namesSave)
+		std::cout << i << std::endl;
+
 	RequestHandlerFactory fact(dataAccess);
 	SignupResponse message1;
 	message1.status = 100;
