@@ -10,7 +10,7 @@ std::queue <std::string> msg;
 using json = nlohmann::json;
 
 
-Communicator::Communicator(IDataAccess& dataAccess, RequestHandlerFactory& fact) : m_handlerFactory(fact)
+Communicator::Communicator(IDataAccess* dataAccess, RequestHandlerFactory& fact) : m_handlerFactory(fact)
 {
 	// this server use TCP. that why SOCK_STREAM & IPPROTO_TCP
 	// if the server use UDP we will use: SOCK_DGRAM & IPPROTO_UDP
@@ -75,7 +75,7 @@ void Communicator::bindAndListen(int port)
 
 	while (true)
 	{
-		IRequestHandler* handle; //???
+
 		// the main thread is only accepting clients 
 		// and add then to the list of handlers
 		std::cout << "Waiting for client connection request" << std::endl;
@@ -87,9 +87,10 @@ void Communicator::bindAndListen(int port)
 
 		std::cout << "Client accepted. Server and client can speak" << std::endl;
 		// the function that handle the conversation with the client
-		m_clients.insert(std::pair<SOCKET, IRequestHandler*>(client_socket, handle));
 		std::thread t(&Communicator::startHandleRequest, this, client_socket);
 		t.detach();
+		IRequestHandler* newHandler = new LoginRequestHandler(this->m_handlerFactory, this->m_handlerFactory.getLoginManager());
+		m_clients.insert({ client_socket, newHandler });
 	}
 	
 }
@@ -109,14 +110,17 @@ std::string Communicator::convertToString(char* a, int start, int end)
 
 void Communicator::handleNewClient(SOCKET clientSocket)
 {
+	/*SqliteDatabase db_backup;
+	db_backup = m_;*/
 	std::vector<unsigned char> vec;
-	LoginRequestHandler* log_handler = m_handlerFactory.createLoginRequestHandler();
-	RequestInfo info;
 	RequestResult res;
 	SignupRequest sign;
 	LoginRequest login;
+	RequestInfo info;
+	//LoginRequestHandler* log_handler = m_handlerFactory.createLoginRequestHandler();
 	int len, count = 0;
 	std::cout << "hi";
+
 	while (true)
 	{
 		char m[LEN_OF_MESSAGE]{};
@@ -134,8 +138,9 @@ void Communicator::handleNewClient(SOCKET clientSocket)
 		vec.insert(vec.begin(), std::begin(m), std::end(m));
 		info.buffer = vec;
 		vec.clear();
-
-		res = log_handler->handleRequest(info);
+		auto it = this->m_clients.find(clientSocket);
+		res = it->second->handleRequest(info);
+		//this->m_handlerFactory.getLoginManager().;
 		vec = res.response;
 
 		std::cout << "received: " << m << std::endl;

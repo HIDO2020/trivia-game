@@ -14,6 +14,7 @@ public:
 	void deleteRoom(int ID);
 	unsigned int getRoomState(int ID);
 	std::vector<RoomData> getRooms();
+	std::map<unsigned int, Room> getRoomInfo();
 
 
 private:

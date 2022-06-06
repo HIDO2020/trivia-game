@@ -14,6 +14,7 @@
 #include "JsonRequestPacketDeserializer.h"
 #include "StatisticsManager.h"
 
+int id_count = rand();
 
 void handle_stop()
 {
@@ -32,15 +33,16 @@ void handle_stop()
 
 int main()
 {
-	SqliteDatabase dataAccess;
-	//.open();
+	srand(time(0));
+	SqliteDatabase* dataAccess = new SqliteDatabase();
+	StatisticsManager stats(*dataAccess);
 	//StatisticsManager s1(dataAccess);
 
 	/*std::vector<std::string> namesSave = s1.getUserStatistics("nativ");
 	for (auto i : namesSave)
 		std::cout << i << std::endl;*/
 
-	RequestHandlerFactory fact(dataAccess);
+	RequestHandlerFactory fact(dataAccess, stats);
 	SignupResponse message1;
 	message1.status = 100;
 	std::vector<unsigned char> test = JsonResponsePacketSerializer::serializeResponse(message1);

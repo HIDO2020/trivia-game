@@ -22,6 +22,81 @@ std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(Login
 	return JsonResponsePacketSerializer::helper(j, code);
 }
 
+std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(LogoutResponse log)
+{
+	json j = { {"status", log.status} };
+	unsigned char code = (unsigned char)logout_;
+	return JsonResponsePacketSerializer::helper(j, code);
+}
+
+std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(GetRoomsResponse get_r)
+{
+	json j = { {"status", get_r.status} };
+	
+	for (int i = 0; i < get_r.rooms.size(); i++)
+	{
+		json jj;
+		jj["id"] = get_r.rooms[i]._RoomId;
+		jj["name"] = get_r.rooms[i]._RoomName;
+		j["rooms"].push_back(jj);
+	}
+	unsigned char code = (unsigned char)getRoom_;
+	return JsonResponsePacketSerializer::helper(j, code);
+}
+
+std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(GetPlayersInRoomResponse get_p)
+{
+	json j = { {"status", 1} };
+
+	for (int i = 0; i < get_p.players.size(); i++)
+	{
+		/*json jj;
+		jj["id"] = get_r.rooms[i]._RoomId;
+		jj["name"] = get_r.rooms[i]._RoomName;*/
+		j["rooms"].push_back(get_p.players[i]);
+	}
+	unsigned char code = (unsigned char)getPlayers_;
+	return JsonResponsePacketSerializer::helper(j, code);
+}
+
+std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(JoinRoomResponse join)
+{
+	json j = { {"status", join.status} };
+	unsigned char code = (unsigned char)join_;
+	return JsonResponsePacketSerializer::helper(j, code);
+}
+
+std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(CreateRoomResponse create)
+{
+	json j = { {"status", create.status} };
+	unsigned char code = (unsigned char)create_;
+	return JsonResponsePacketSerializer::helper(j, code);
+}
+
+std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(GetHighScoreResponse get_h)
+{
+	json j = { {"status", get_h.status} };
+
+	for (int i = 0; i < get_h.statistics.size(); i++)
+	{
+		j["HighScores"].push_back(get_h.statistics[i]);
+	}
+	unsigned char code = (unsigned char)getHighScore_;
+	return JsonResponsePacketSerializer::helper(j, code);
+}
+
+std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(GetPersonalStatsResponse get_ps)
+{
+	json j = { {"status", get_ps.status} };
+
+	for (int i = 0; i < get_ps.statistics.size(); i++)
+	{
+		j["Personal Stats"].push_back(get_ps.statistics[i]);
+	}
+	unsigned char code = (unsigned char)getPersonalStats_;
+	return JsonResponsePacketSerializer::helper(j, code);
+}
+
 std::vector<unsigned char> JsonResponsePacketSerializer::helper(json j, int code)
 {
 	//unsigned char zer = '0';

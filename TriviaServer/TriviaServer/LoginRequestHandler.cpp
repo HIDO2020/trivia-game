@@ -45,15 +45,17 @@ RequestResult LoginRequestHandler::handleRequest(RequestInfo info) //need to cha
 
 RequestResult LoginRequestHandler::login(RequestInfo info)
 {
-	MenuRequestHandler menu;
 	LoginResponse log_mes;
 	RequestResult res;
 	LoginRequest log_req = JsonRequestPacketDeserializer::deserializeLoginRequest(info.buffer);
 
+	LoggedUser user(log_req.username);
+	MenuRequestHandler* menu = this->m_handleFactory.createMenuRequestHandler(user);
+
 	if (m_loginManager.LogIn(log_req.username, log_req.password))
 	{
 		log_mes.status = 1;
-		res.newHandler = &menu;
+		res.newHandler = &(*menu);
 	}
 	else
 	{
@@ -68,15 +70,17 @@ RequestResult LoginRequestHandler::login(RequestInfo info)
 
 RequestResult LoginRequestHandler::signup(RequestInfo info)
 {
-	MenuRequestHandler menu;
 	RequestResult res;
 	SignupResponse sign_mes;
 	SignupRequest sign_req = JsonRequestPacketDeserializer::deserializeSignupRequest(info.buffer);
 
+	LoggedUser user(sign_req.username);
+	MenuRequestHandler* menu = this->m_handleFactory.createMenuRequestHandler(user);
+
 	if (m_loginManager.SignUp(sign_req.username, sign_req.password, sign_req.email))
 	{
 		sign_mes.status = 1;
-		res.newHandler = &menu;
+		res.newHandler = &(*menu);
 	}
 	else
 	{

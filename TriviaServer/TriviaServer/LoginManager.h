@@ -24,8 +24,9 @@ enum options {
 class LoginManager
 {
 public:
-    LoginManager(IDataAccess& dataAccess);
-    ~LoginManager();
+    LoginManager();
+    LoginManager(IDataAccess* dataAccess);
+    //~LoginManager();
     bool SignUp(std::string name, std::string pass, std::string email);
     bool LogIn(std::string name, std::string pass);
     bool LogOut(std::string name);
@@ -34,5 +35,5 @@ public:
 
 private:
     std::vector<LoggedUser> m_loggedUsers;
-    IDataAccess& m_database;
+    IDataAccess* m_database;
 };

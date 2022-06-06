@@ -12,7 +12,7 @@ class SqliteDatabase : public IDataAccess
 {
 
 public:
-	SqliteDatabase() = default;
+	SqliteDatabase();
 	virtual ~SqliteDatabase() = default;
 
 	//USERS

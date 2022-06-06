@@ -27,7 +27,7 @@ class RequestHandlerFactory;
 class Communicator
 {
 public:
-	Communicator(IDataAccess& dataAccess, RequestHandlerFactory& fact);
+	Communicator(IDataAccess* dataAccess, RequestHandlerFactory& fact);
 	~Communicator();
 	void handle_messages(int port);
 	void startHandleRequest(SOCKET clientSocket);

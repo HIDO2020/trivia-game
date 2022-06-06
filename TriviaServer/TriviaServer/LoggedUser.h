@@ -1,3 +1,6 @@
+#ifndef LoggedUser_HEADER
+#define LoggedUser_HEADER
+
 #include <iostream>
 #include <string>
 
@@ -11,3 +14,4 @@ public:
 private:
 	std::string m_username;
 };
+#endif

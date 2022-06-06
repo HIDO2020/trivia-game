@@ -35,6 +35,11 @@ int callback_existUser(void* data, int argc, char** argv, char** azColName)
 	return 0;
 }
 
+SqliteDatabase::SqliteDatabase()
+{
+	this->open();
+}
+
 /*
 check if ther user with that name
 */

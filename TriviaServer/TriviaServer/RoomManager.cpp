@@ -1,5 +1,5 @@
 #include "RoomManager.h"
-
+extern int id_count;
 
 RoomManager::RoomManager()
 {
@@ -18,6 +18,7 @@ void RoomManager::createRoom(std::string name, RoomData data)
 	Room r(data._RoomId, data._RoomName, data._MaxPlayers, data._AvgTime, data._Active);
 	this->m_rooms.insert(std::pair<unsigned int, Room>(this->_AmountOoRooms, r));
 	this->_AmountOoRooms++;
+	id_count++;
 }
 
 void RoomManager::deleteRoom(int ID)
@@ -42,4 +43,9 @@ std::vector<RoomData> RoomManager::getRooms()
 		++iter;
 	}
 	return copy;
+}
+
+std::map<unsigned int, Room> RoomManager::getRoomInfo()
+{
+	return this->m_rooms;
 }

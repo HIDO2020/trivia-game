@@ -1,36 +1,42 @@
 #include "LoginManager.h"
 
-LoginManager::LoginManager(IDataAccess& dataAccess) :
+LoginManager::LoginManager()
+{
+    this->m_database = nullptr;
+}
+
+LoginManager::LoginManager(IDataAccess* dataAccess) :
     m_database(dataAccess)
 {
     this->m_loggedUsers.clear();
-    this->m_database.open();
+    //this->m_database.open();
 }
 
-LoginManager::~LoginManager()
-{
-    this->m_loggedUsers.clear();
-    m_database.close();
-    //delete this;
-}
+//LoginManager::~LoginManager()
+//{
+//    this->m_loggedUsers.clear();
+//    m_database.close();
+//    //delete this;
+//}
 
 bool LoginManager::SignUp(std::string name, std::string pass, std::string email)
 {
-    if (m_database.DoesUserExist(name))
+    if (m_database->DoesUserExist(name))
     {
         std::cout << "User does already exist!" << std::endl;
         return false;
     }
     else
     {
-        m_database.AddNewUser(name, pass, email);
+        m_database->AddNewUser(name, pass, email);
         return true;
     }
 }
 
 bool LoginManager::LogIn(std::string name, std::string pass)
 {
-    if (!(m_database.DoesPasswordMatch(name, pass)))
+    //std::cout << this->m_database;
+    if (!(m_database->DoesPasswordMatch(name, pass)))
     {
         std::cout << "No existing user" << std::endl;
         return false;
