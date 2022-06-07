@@ -33,6 +33,9 @@ namespace TriviaGraphic
             username = UsernameInput.Text;
             password = PasswordInput.Password;
             Console.WriteLine(username + " " + password);
+
+            //Communicator(username, password);
+
             //MessageBox.Show(username + " " + password);
             Home HomePage = new Home();
             this.NavigationService.Navigate(HomePage);
