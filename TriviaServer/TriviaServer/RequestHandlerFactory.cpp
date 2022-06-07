@@ -24,7 +24,7 @@ LoginManager& RequestHandlerFactory::getLoginManager()
 
 MenuRequestHandler* RequestHandlerFactory::createMenuRequestHandler(LoggedUser logged)
 {
-	MenuRequestHandler* menu_han = new MenuRequestHandler(*this, this->m_loginManager, logged, this->m_roomManager);
+	MenuRequestHandler* menu_han = new MenuRequestHandler(*this, this->getLoginManager(), logged, this->getRoomManager());
 	return menu_han;
 }
 

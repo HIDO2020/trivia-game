@@ -10,7 +10,7 @@ class RequestHandlerFactory;
 class MenuRequestHandler : public IRequestHandler
 {
 public:
-	MenuRequestHandler(RequestHandlerFactory& fact,LoginManager manage, LoggedUser user, RoomManager room);
+	MenuRequestHandler(RequestHandlerFactory& fact,LoginManager& manage, LoggedUser user, RoomManager& room);
 	virtual bool isRequestRelevant(RequestInfo info);
 	virtual RequestResult handleRequest(RequestInfo info);
 

@@ -1,6 +1,6 @@
 #include "MenuRequestHandler.h"
 extern int id_count;
-MenuRequestHandler::MenuRequestHandler(RequestHandlerFactory& fact, LoginManager manage, LoggedUser user, RoomManager room) 
+MenuRequestHandler::MenuRequestHandler(RequestHandlerFactory& fact, LoginManager& manage, LoggedUser user, RoomManager& room) 
 	: m_handleFactory(fact), m_roomManager(room),
 	m_loginManager(manage), m_user(user)
 {

@@ -48,7 +48,6 @@ RequestResult LoginRequestHandler::login(RequestInfo info)
 	LoginResponse log_mes;
 	RequestResult res;
 	LoginRequest log_req = JsonRequestPacketDeserializer::deserializeLoginRequest(info.buffer);
-
 	LoggedUser user(log_req.username);
 	MenuRequestHandler* menu = this->m_handleFactory.createMenuRequestHandler(user);
 

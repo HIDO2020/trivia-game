@@ -5,10 +5,10 @@ StatisticsManager::StatisticsManager(IDataAccess& database) : m_database(databas
 	this->m_database.open();
 }
 
-StatisticsManager::~StatisticsManager()
-{
-	this->m_database.close();
-}
+////StatisticsManager::~StatisticsManager()
+////{
+////	this->m_database.close();
+////}
 
 std::vector<std::string> StatisticsManager::getHighScore()
 {

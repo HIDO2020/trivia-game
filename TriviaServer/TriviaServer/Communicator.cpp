@@ -138,17 +138,19 @@ void Communicator::handleNewClient(SOCKET clientSocket)
 		vec.insert(vec.begin(), std::begin(m), std::end(m));
 		info.buffer = vec;
 		vec.clear();
+
 		auto it = this->m_clients.find(clientSocket);
 		res = it->second->handleRequest(info);
 		//this->m_handlerFactory.getLoginManager().;
 		vec = res.response;
+		it->second = res.newHandler;
 
 		std::cout << "received: " << m << std::endl;
 
-		if (info.id == signup_)
+		/*if (info.id == signup_)
 			sign = JsonRequestPacketDeserializer::deserializeSignupRequest(info.buffer);
 		else if (info.id == login_)
-			login = JsonRequestPacketDeserializer::deserializeLoginRequest(info.buffer);
+			login = JsonRequestPacketDeserializer::deserializeLoginRequest(info.buffer);*/
 
 				//convert to char vector in order to send the message
 		std::vector<char> newOne = std::vector<char>(vec.begin(), vec.end());

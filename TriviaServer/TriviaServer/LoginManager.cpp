@@ -2,7 +2,7 @@
 
 LoginManager::LoginManager()
 {
-    this->m_database = nullptr;
+    //this->m_database = nullptr;
 }
 
 LoginManager::LoginManager(IDataAccess* dataAccess) :
@@ -12,12 +12,12 @@ LoginManager::LoginManager(IDataAccess* dataAccess) :
     //this->m_database.open();
 }
 
-//LoginManager::~LoginManager()
-//{
-//    this->m_loggedUsers.clear();
-//    m_database.close();
-//    //delete this;
-//}
+LoginManager::~LoginManager()
+{
+    this->m_loggedUsers.clear();
+    this->m_database->close();
+    //delete this;
+}
 
 bool LoginManager::SignUp(std::string name, std::string pass, std::string email)
 {

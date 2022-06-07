@@ -26,7 +26,7 @@ class LoginManager
 public:
     LoginManager();
     LoginManager(IDataAccess* dataAccess);
-    //~LoginManager();
+    ~LoginManager();
     bool SignUp(std::string name, std::string pass, std::string email);
     bool LogIn(std::string name, std::string pass);
     bool LogOut(std::string name);
