@@ -15,13 +15,17 @@ using System.Windows.Shapes;
 
 namespace TriviaGraphic
 {
+
     /// <summary>
     /// Interaction logic for ConnectUser.xaml
     /// </summary>
+    /// 
     public partial class ConnectUser : Page
     {
+        Communicator c = new Communicator();
         string username;
         string password;
+        string req;
 
         public ConnectUser()
         {
@@ -33,8 +37,10 @@ namespace TriviaGraphic
             username = UsernameInput.Text;
             password = PasswordInput.Password;
             Console.WriteLine(username + " " + password);
+            LoginRequest log = new LoginRequest { _username = username, _password = password };
 
-            //Communicator(username, password);
+            req = c.LoginSe(log);
+            MessageBox.Show(req);
 
             //MessageBox.Show(username + " " + password);
             Home HomePage = new Home();
