@@ -20,9 +20,11 @@ namespace TriviaGraphic
     /// </summary>
     public partial class Register : Page
     {
+        Communicator c = new Communicator();
         string username;
         string password;
         string email;
+        string req;
 
         public Register()
         {
@@ -34,6 +36,12 @@ namespace TriviaGraphic
             username = _Username.Text;
             password = _Password.Password;
             email = _Email.Text;
+
+            SignupRequest log = new SignupRequest { _username = username, _password = password, _email = email};
+
+            req = c.RegisterSe(log);
+            MessageBox.Show(req);
+
             Console.WriteLine(username + " " + password + " " + email);
             //MessageBox.Show(username + " " + password + " " + email);
             Home HomePage = new Home();

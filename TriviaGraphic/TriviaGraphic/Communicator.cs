@@ -10,12 +10,13 @@ using System.Text.Json;
 namespace TriviaGraphic
 {
     enum codes { Error_, signup_, login_, logout_, join_, create_, getRoom_, getPlayers_, getHighScore_, getPersonalStats_ };
-    //struct SignupRequest
-    //{
-    //    string username;
-    //    string password;
-    //    string email;
-    //};
+    
+    struct SignupRequest
+    {
+        public string _username { get; set; }
+        public string _password { get; set; }
+        public string _email { get; set; }
+    };
 
     struct LoginRequest
     {
@@ -30,33 +31,41 @@ namespace TriviaGraphic
         
         public string LoginSe(LoginRequest log)
         {
+            int code = (int)codes.login_; 
             var loginRequest = new LoginRequest
             {
                 _username = log._username,
                 _password = log._password
             };
             string jsonString = JsonSerializer.Serialize<LoginRequest>(loginRequest);
-            return jsonString;
-            //return helper(j, code);
+            //return jsonString;
+            return helper(jsonString, code);
         }
 
-        //public string helper(json j, int code)
-        //{
-        //    //unsigned char zer = '0';
-        //    std::vector < unsigned char> res;
-        //    res.push_back((unsigned char)code);
-        //    std::string str_res = j.dump();
+        public string RegisterSe(SignupRequest log)
+        {
+            int code = (int)codes.signup_;
+            var signupRequest = new SignupRequest
+            {
+                _username = log._username,
+                _password = log._password,
+                _email = log._email
+            };
+            string jsonString = JsonSerializer.Serialize<SignupRequest>(signupRequest);
+            //return jsonString;
+            return helper(jsonString, code);
+        }
 
-        //    int size = str_res.size();
-        //    /*std::string size = std::to_string(str_res.size());
-        //    for (int i = 0; i < size.size(); i++)
-        //        res.push_back(size[i]);*/
-        //    res.push_back(size);
-        //    while (res.size() < 5)
-        //        res.push_back(NULL);
-
-        //    res.insert(res.end(), str_res.begin(), str_res.end());
-        //    return res;
-        //}
+        public string helper(string j, int code)
+        {
+            string res = "";
+            res += code.ToString();
+            int size = j.Length;
+            res += size.ToString();
+            while (res.Length < 5)
+                res += 0;
+            res += j; 
+            return res;
+        }
     }
 }
