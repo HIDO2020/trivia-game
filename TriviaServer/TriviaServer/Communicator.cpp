@@ -119,7 +119,7 @@ void Communicator::handleNewClient(SOCKET clientSocket)
 	RequestInfo info;
 	//LoginRequestHandler* log_handler = m_handlerFactory.createLoginRequestHandler();
 	int len, count = 0;
-	std::cout << "hi";
+	//std::cout << "hi";
 
 	while (true)
 	{
@@ -154,6 +154,9 @@ void Communicator::handleNewClient(SOCKET clientSocket)
 
 				//convert to char vector in order to send the message
 		std::vector<char> newOne = std::vector<char>(vec.begin(), vec.end());
+		for (int i = 0; i < newOne.size(); i++) {
+			std::cout << newOne[i];
+		}
 		send(clientSocket, &newOne[0], vec.size(), 0);
 	}
 }

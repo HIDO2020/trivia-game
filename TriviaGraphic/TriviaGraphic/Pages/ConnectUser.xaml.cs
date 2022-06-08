@@ -37,10 +37,11 @@ namespace TriviaGraphic
             username = UsernameInput.Text;
             password = PasswordInput.Password;
             Console.WriteLine(username + " " + password);
-            LoginRequest log = new LoginRequest { _username = username, _password = password };
+            LoginRequest log = new LoginRequest { username = username, password = password };
 
             req = c.LoginSe(log);
             MessageBox.Show(req);
+            c.handleCommunicate(req);
 
             //MessageBox.Show(username + " " + password);
             Home HomePage = new Home();

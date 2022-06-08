@@ -15,15 +15,15 @@ namespace TriviaGraphic
 
     struct SignupRequest
     {
-        public string _username { get; set; }
-        public string _password { get; set; }
-        public string _email { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        public string email { get; set; }
     };
 
     struct LoginRequest
     {
-        public string _username { get; set; }
-        public string _password { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
     }
 
 
@@ -31,18 +31,23 @@ namespace TriviaGraphic
     class Communicator
     {
         NetworkStream _stream;
-        Communicator()
+        public Communicator()
         {
             TcpClient client = new TcpClient();
             IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8826);
             client.Connect(serverEndPoint);
             NetworkStream clientStream = client.GetStream();
             this._stream = clientStream;
+            byte[] buffer = new ASCIIEncoding().GetBytes("hello");
+            this._stream.Write(buffer, 0, buffer.Length);
+            this._stream.Flush();
+            buffer = new byte[4096];
         }
 
         public bool handleCommunicate(string req)
         {
-            byte[] buffer = new ASCIIEncoding().GetBytes("Hello Server!");
+            Console.WriteLine(req);
+            byte[] buffer = new ASCIIEncoding().GetBytes(req);
             this._stream.Write(buffer, 0, buffer.Length);
             this._stream.Flush();
             buffer = new byte[4096];
@@ -57,8 +62,8 @@ namespace TriviaGraphic
             int code = (int)codes.login_;
             var loginRequest = new LoginRequest
             {
-                _username = log._username,
-                _password = log._password
+                username = log.username,
+                password = log.password
             };
             string jsonString = JsonSerializer.Serialize<LoginRequest>(loginRequest);
             //return jsonString;
@@ -70,9 +75,9 @@ namespace TriviaGraphic
             int code = (int)codes.signup_;
             var signupRequest = new SignupRequest
             {
-                _username = log._username,
-                _password = log._password,
-                _email = log._email
+                username = log.username,
+                password = log.password,
+                email = log.email
             };
             string jsonString = JsonSerializer.Serialize<SignupRequest>(signupRequest);
             //return jsonString;

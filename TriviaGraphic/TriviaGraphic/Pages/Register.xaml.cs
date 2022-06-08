@@ -37,7 +37,7 @@ namespace TriviaGraphic
             password = _Password.Password;
             email = _Email.Text;
 
-            SignupRequest log = new SignupRequest { _username = username, _password = password, _email = email};
+            SignupRequest log = new SignupRequest { username = username, password = password, email = email};
 
             req = c.RegisterSe(log);
             MessageBox.Show(req);
