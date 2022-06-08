@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 //using Newtonsoft.Json;
 //using System.Text.Json;
 using System.Text.Json;
+using System.Net.Sockets;
+using System.Net;
 
 namespace TriviaGraphic
 {
     enum codes { Error_, signup_, login_, logout_, join_, create_, getRoom_, getPlayers_, getHighScore_, getPersonalStats_ };
-    
+
     struct SignupRequest
     {
         public string _username { get; set; }
@@ -28,10 +30,31 @@ namespace TriviaGraphic
 
     class Communicator
     {
-        
+        NetworkStream _stream;
+        Communicator()
+        {
+            TcpClient client = new TcpClient();
+            IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8826);
+            client.Connect(serverEndPoint);
+            NetworkStream clientStream = client.GetStream();
+            this._stream = clientStream;
+        }
+
+        public bool handleCommunicate(string req)
+        {
+            byte[] buffer = new ASCIIEncoding().GetBytes("Hello Server!");
+            this._stream.Write(buffer, 0, buffer.Length);
+            this._stream.Flush();
+            buffer = new byte[4096];
+
+
+
+            return true;
+        }
+
         public string LoginSe(LoginRequest log)
         {
-            int code = (int)codes.login_; 
+            int code = (int)codes.login_;
             var loginRequest = new LoginRequest
             {
                 _username = log._username,
@@ -64,7 +87,7 @@ namespace TriviaGraphic
             res += size.ToString();
             while (res.Length < 5)
                 res += 0;
-            res += j; 
+            res += j;
             return res;
         }
     }
