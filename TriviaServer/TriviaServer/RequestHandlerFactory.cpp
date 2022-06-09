@@ -1,9 +1,9 @@
 #include "RequestHandlerFactory.h"
 
-RequestHandlerFactory::RequestHandlerFactory(IDataAccess* dataAccess, StatisticsManager stats) : m_database(dataAccess)
+RequestHandlerFactory::RequestHandlerFactory(IDataAccess& dataAccess, StatisticsManager stats) : m_database(&dataAccess)
 	, m_StatisticsManager(stats)
 {
-	this->m_loginManager = LoginManager(dataAccess);
+	this->m_loginManager = LoginManager(&dataAccess);
 }
 
 //RequestHandlerFactory::~RequestHandlerFactory()

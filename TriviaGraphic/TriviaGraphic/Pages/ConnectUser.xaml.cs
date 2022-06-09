@@ -40,12 +40,16 @@ namespace TriviaGraphic
             LoginRequest log = new LoginRequest { username = username, password = password };
 
             req = c.LoginSe(log);
-            MessageBox.Show(req);
+            //MessageBox.Show(req);
             if (c.handleCommunicate(req))
             {
                 //MessageBox.Show(username + " " + password);
                 Home HomePage = new Home();
                 this.NavigationService.Navigate(HomePage);
+            }
+            else
+            {
+                MessageBox.Show("User Does Not Exist!");
             }
         }
 

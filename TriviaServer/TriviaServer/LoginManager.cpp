@@ -15,7 +15,7 @@ LoginManager::LoginManager(IDataAccess* dataAccess) :
 LoginManager::~LoginManager()
 {
     this->m_loggedUsers.clear();
-    this->m_database->close();
+    //this->m_database->close();
     //delete this;
 }
 

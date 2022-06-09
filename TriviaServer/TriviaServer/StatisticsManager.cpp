@@ -2,7 +2,7 @@
 
 StatisticsManager::StatisticsManager(IDataAccess& database) : m_database(database)
 {
-	this->m_database.open();
+	//this->m_database.open();
 }
 
 ////StatisticsManager::~StatisticsManager()

@@ -41,7 +41,7 @@ int main()
 	for (auto i : namesSave)
 		std::cout << i << std::endl;*/
 	LoggedUser test2("arnon");
-	RequestHandlerFactory fact(dataAccess, stats);
+	RequestHandlerFactory fact(*dataAccess, stats);
 	MenuRequestHandler* menu = fact.createMenuRequestHandler(test2);
 	SignupResponse message1;
 	message1.status = 100;

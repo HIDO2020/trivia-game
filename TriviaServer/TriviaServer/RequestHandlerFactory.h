@@ -12,7 +12,7 @@ class MenuRequestHandler;
 class RequestHandlerFactory
 {
 public:
-	RequestHandlerFactory(IDataAccess* dataAccess, StatisticsManager stats);
+	RequestHandlerFactory(IDataAccess& dataAccess, StatisticsManager stats);
 	//~RequestHandlerFactory();
 	LoginRequestHandler* createLoginRequestHandler(); //
 	LoginManager& getLoginManager(); //

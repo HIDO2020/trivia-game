@@ -40,12 +40,18 @@ namespace TriviaGraphic
             SignupRequest log = new SignupRequest { username = username, password = password, email = email};
 
             req = c.RegisterSe(log);
-            MessageBox.Show(req);
-
-            Console.WriteLine(username + " " + password + " " + email);
-            //MessageBox.Show(username + " " + password + " " + email);
-            Home HomePage = new Home();
-            this.NavigationService.Navigate(HomePage);
+            //MessageBox.Show(req);
+            if (c.handleCommunicate(req))
+            {
+                Console.WriteLine(username + " " + password + " " + email);
+                //MessageBox.Show(username + " " + password + " " + email);
+                Home HomePage = new Home();
+                this.NavigationService.Navigate(HomePage);
+            }
+            else
+            {
+                MessageBox.Show("Username Already Taken");
+            }
         }
 
         private void back_click(object sender, RoutedEventArgs e)
