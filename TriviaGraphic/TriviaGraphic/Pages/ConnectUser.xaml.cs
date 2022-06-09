@@ -20,12 +20,13 @@ namespace TriviaGraphic
     /// Interaction logic for ConnectUser.xaml
     /// </summary>
     /// 
-    public partial class ConnectUser : Page
+    public partial class ConnectUser : Page 
     {
         Communicator c = new Communicator();
         string username;
         string password;
         string req;
+        
 
         public ConnectUser()
         {

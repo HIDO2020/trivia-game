@@ -18,7 +18,7 @@
         <Frame x:Name="myFrame" NavigationUIVisibility="Hidden">
 
         </Frame>
-        
+
     </Border>
 
 </Window>

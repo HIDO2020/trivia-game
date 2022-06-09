@@ -18,7 +18,7 @@ RequestResult MenuRequestHandler::handleRequest(RequestInfo info)
 {
 	ErrorResponse err_mes;
 	err_mes.message = "Error!";
-
+	std::cout << info.id << std::endl;
 	std::vector<unsigned char> vec;
 	if (isRequestRelevant(info))
 	{

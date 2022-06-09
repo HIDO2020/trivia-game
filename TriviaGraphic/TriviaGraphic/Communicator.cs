@@ -82,6 +82,21 @@ namespace TriviaGraphic
             return true;
         }
 
+        public string getData(string req)
+        {
+            Console.WriteLine(req);
+            byte[] buffer = new ASCIIEncoding().GetBytes(req);
+            this._stream.Write(buffer, 0, buffer.Length);
+            this._stream.Flush();
+            buffer = new byte[4096];
+            int bytesRead = this._stream.Read(buffer, 0, 4096);
+            string text = System.Text.Encoding.ASCII.GetString(buffer);
+
+            Console.WriteLine(text);
+
+            return text;
+        }
+
         public string LoginSe(LoginRequest log)
         {
             int code = (int)codes.login_;
@@ -107,6 +122,11 @@ namespace TriviaGraphic
             string jsonString = JsonSerializer.Serialize<SignupRequest>(signupRequest);
             //return jsonString;
             return helper(jsonString, code);
+        }
+
+        public string StatsSe()
+        {          
+            return "90000{}";
         }
 
         public string helper(string j, int code)

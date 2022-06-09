@@ -20,11 +20,11 @@ namespace TriviaGraphic
     /// </summary>
     public partial class Register : Page
     {
-        Communicator c = new Communicator();
         string username;
         string password;
         string email;
         string req;
+        Communicator c = new Communicator();
 
         public Register()
         {

@@ -21,14 +21,15 @@ namespace TriviaGraphic
     public partial class MainWindow : Window
     {
 
+
         public MainWindow()
         {
             InitializeComponent();
-
             //Home HomePage = new Home();
             ConnectUser loginPage = new ConnectUser();
             myFrame.NavigationService.Navigate(loginPage);
-
+           
         }
+
     }
 }

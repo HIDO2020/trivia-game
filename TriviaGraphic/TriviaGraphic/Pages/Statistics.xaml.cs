@@ -20,9 +20,17 @@ namespace TriviaGraphic
     /// </summary>
     public partial class Statistics : Page
     {
+        string req;
+        string answer;
+        Communicator c = new Communicator();
+
         public Statistics()
         {
             InitializeComponent();
+            req = c.StatsSe();
+            MessageBox.Show(req);
+            answer = c.getData(req);
+            MessageBox.Show(answer);
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
