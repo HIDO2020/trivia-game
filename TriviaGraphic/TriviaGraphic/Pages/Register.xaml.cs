@@ -24,7 +24,6 @@ namespace TriviaGraphic
         string password;
         string email;
         string req;
-        Communicator c = new Communicator();
 
         public Register()
         {
@@ -39,9 +38,9 @@ namespace TriviaGraphic
 
             SignupRequest log = new SignupRequest { username = username, password = password, email = email};
 
-            req = c.RegisterSe(log);
+            req = GLOBALS.f_comm.RegisterSe(log);
             //MessageBox.Show(req);
-            if (c.handleCommunicate(req))
+            if (GLOBALS.f_comm.handleCommunicate(req))
             {
                 Console.WriteLine(username + " " + password + " " + email);
                 //MessageBox.Show(username + " " + password + " " + email);

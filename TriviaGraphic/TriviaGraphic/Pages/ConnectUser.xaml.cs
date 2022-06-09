@@ -22,7 +22,7 @@ namespace TriviaGraphic
     /// 
     public partial class ConnectUser : Page 
     {
-        Communicator c = new Communicator();
+        //Communicator c = new Communicator();
         string username;
         string password;
         string req;
@@ -40,9 +40,9 @@ namespace TriviaGraphic
             Console.WriteLine(username + " " + password);
             LoginRequest log = new LoginRequest { username = username, password = password };
 
-            req = c.LoginSe(log);
+            req = GLOBALS.f_comm.LoginSe(log);
             //MessageBox.Show(req);
-            if (c.handleCommunicate(req))
+            if (GLOBALS.f_comm.handleCommunicate(req))
             {
                 //MessageBox.Show(username + " " + password);
                 Home HomePage = new Home();

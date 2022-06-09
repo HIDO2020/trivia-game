@@ -22,14 +22,13 @@ namespace TriviaGraphic
     {
         string req;
         string answer;
-        Communicator c = new Communicator();
 
         public Statistics()
         {
             InitializeComponent();
-            req = c.StatsSe();
+            req = GLOBALS.f_comm.StatsSe();
             MessageBox.Show(req);
-            answer = c.getData(req);
+            answer = GLOBALS.f_comm.getData(req);
             MessageBox.Show(answer);
         }
 
