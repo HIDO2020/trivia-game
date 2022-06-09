@@ -41,11 +41,12 @@ namespace TriviaGraphic
 
             req = c.LoginSe(log);
             MessageBox.Show(req);
-            c.handleCommunicate(req);
-
-            //MessageBox.Show(username + " " + password);
-            Home HomePage = new Home();
-            this.NavigationService.Navigate(HomePage);
+            if (c.handleCommunicate(req))
+            {
+                //MessageBox.Show(username + " " + password);
+                Home HomePage = new Home();
+                this.NavigationService.Navigate(HomePage);
+            }
         }
 
         private void signup_click(object sender, RoutedEventArgs e)

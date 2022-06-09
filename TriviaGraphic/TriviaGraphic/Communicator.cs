@@ -42,6 +42,23 @@ namespace TriviaGraphic
             this._stream.Write(buffer, 0, buffer.Length);
             this._stream.Flush();
             buffer = new byte[4096];
+            int bytesRead = this._stream.Read(buffer, 0, 4096);
+            var text = System.Text.Encoding.ASCII.GetString(buffer);
+
+            Console.WriteLine(text);
+        }
+
+        public static string getBetween(string strSource, string strStart, string strEnd)
+        {
+            if (strSource.Contains(strStart) && strSource.Contains(strEnd))
+            {
+                int Start, End;
+                Start = strSource.IndexOf(strStart, 0) + strStart.Length;
+                End = strSource.IndexOf(strEnd, Start);
+                return strSource.Substring(Start, End - Start);
+            }
+
+            return "";
         }
 
         public bool handleCommunicate(string req)
@@ -51,9 +68,17 @@ namespace TriviaGraphic
             this._stream.Write(buffer, 0, buffer.Length);
             this._stream.Flush();
             buffer = new byte[4096];
+            int bytesRead = this._stream.Read(buffer, 0, 4096);
+            string text = System.Text.Encoding.ASCII.GetString(buffer);
 
+            Console.WriteLine(text);
 
-
+            text = getBetween(text, "{", "}");
+            Console.WriteLine(text);
+            char error = text[text.Length - 1];
+            Console.WriteLine(error);
+            if (error == '0')
+                return false;
             return true;
         }
 
