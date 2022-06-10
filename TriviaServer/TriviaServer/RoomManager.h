@@ -14,11 +14,11 @@ public:
 	void deleteRoom(int ID);
 	unsigned int getRoomState(int ID);
 	std::vector<RoomData> getRooms();
-	std::map<unsigned int, Room> getRoomInfo();
+	std::map<int, Room*> getRoomInfo();
 
 
 private:
-	std::map<unsigned int, Room> m_rooms;	//room ID 
+	std::map<int, Room*> m_rooms;	//room ID 
 	unsigned int _AmountOoRooms;
 };
 

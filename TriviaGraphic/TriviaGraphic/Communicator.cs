@@ -28,10 +28,10 @@ namespace TriviaGraphic
 
     public struct CreateRoomRequest
     {
-        public string roomName { get; set; }
-        public int maxUsers { get; set; }
-        public int questionCount { get; set; }
-        public int answerTimeout { get; set; }
+        public string name { get; set; }
+        public int max_users { get; set; }
+        public int question_count { get; set; }
+        public int answer_timeout { get; set; }
     };
 
 
@@ -95,6 +95,7 @@ namespace TriviaGraphic
         {
             Console.WriteLine(req);
             byte[] buffer = new ASCIIEncoding().GetBytes(req);
+           
             this._stream.Write(buffer, 0, buffer.Length);
             this._stream.Flush();
             buffer = new byte[4096];
@@ -162,10 +163,10 @@ namespace TriviaGraphic
             int code = (int)codes.create_;
             var createRoomRequest = new CreateRoomRequest
             {
-                roomName = log.roomName,
-                maxUsers = log.maxUsers,
-                questionCount = log.questionCount,
-                answerTimeout = log.answerTimeout
+                name = log.name,
+                max_users = log.max_users,
+                question_count = log.question_count,
+                answer_timeout = log.answer_timeout
             };
             string jsonString = JsonSerializer.Serialize<CreateRoomRequest>(createRoomRequest);
             //return jsonString;

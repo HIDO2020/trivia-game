@@ -52,8 +52,8 @@ CreateRoomRequest JsonRequestPacketDeserializer::deserializeCreateRoomRequest(st
 	json j = json::parse(request_vec.begin() + 5, request_vec.end());
 	//std::string str_res = j.dump();
 	req.roomName = j["name"];
-	req.questionCount = j["question count"];
-	req.maxUsers = j["max users"];
-	req.answerTimeout = j["answer timeout"];
+	req.questionCount = j["question_count"];
+	req.maxUsers = j["max_users"];
+	req.answerTimeout = j["answer_timeout"];
 	return req;
 }

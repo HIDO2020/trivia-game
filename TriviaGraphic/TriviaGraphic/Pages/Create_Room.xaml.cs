@@ -47,7 +47,7 @@ namespace TriviaGraphic
 
             //Console.WriteLine(_roomName + " " + _players.ToString() + " " + _questions.ToString() + " " + _time.ToString());
             MessageBox.Show(_roomName + " " + _players.ToString() + " " + _questions.ToString() + " " + _time.ToString());
-            CreateRoomRequest log = new CreateRoomRequest { roomName = _roomName, maxUsers = _players, questionCount = _questions, answerTimeout = _time };
+            CreateRoomRequest log = new CreateRoomRequest { name = _roomName, max_users = _players, question_count = _questions, answer_timeout = _time };
             req = c.CreateRoomSe(log);
             if (c.handleCommunicate(req))
             {
