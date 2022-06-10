@@ -45,8 +45,10 @@ namespace TriviaGraphic
             _questions = Questions.Value;
             _time = Time.Value;
 
-            Console.WriteLine(_roomName + " " + _players.ToString() + " " + _questions.ToString() + " " + _time.ToString());
-            //MessageBox.Show(_roomName + " " + _players.ToString() + " " + _questions.ToString() + " " + _time.ToString());
+            //Console.WriteLine(_roomName + " " + _players.ToString() + " " + _questions.ToString() + " " + _time.ToString());
+            MessageBox.Show(_roomName + " " + _players.ToString() + " " + _questions.ToString() + " " + _time.ToString());
+            Room roomPage = new Room();
+            this.NavigationService.Navigate(roomPage);
         }
 
     }

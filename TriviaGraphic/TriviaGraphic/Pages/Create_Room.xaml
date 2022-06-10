@@ -39,7 +39,7 @@
                     <Rectangle Height="5" Width="60"/>
                     <Label Content="Room Name:" Height="55" Width="135" Background="{x:Null}" FontWeight="Bold" FontSize="20" />
                     <Rectangle Height="5" Width="60"/>
-                    <Label Content="Amount Of &#xA;Players:" Height="70" Width="135" Background="{x:Null}" FontWeight="Bold" FontSize="20" />
+                    <Label Content="Max Amount&#xD;&#xA; Of Players:" Height="70" Width="135" Background="{x:Null}" FontWeight="Bold" FontSize="20" />
                     <Label Content="Amount Of &#xA;Questions:" Height="70" Width="135" Background="{x:Null}" FontWeight="Bold" FontSize="20" />
 
                     <Label Content="Time For&#xA;Question:" Height="65" Width="135" Background="{x:Null}" FontWeight="Bold" FontSize="20" />
@@ -47,7 +47,7 @@
                 </ListBox>
                 <ListBox BorderThickness="0" HorizontalAlignment="Left" Height="210" Margin="315,95,0,0" VerticalAlignment="Top" Width="265" Background="{x:Null}">
 
-                    <Slider x:Name="Players" Height="40" Width="250" Maximum="10" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True"/>
+                    <Slider x:Name="Players" Height="40" Width="250" Maximum="9" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True"/>
                     <Rectangle Height="35" Width="250"/>
                     <Slider x:Name="Questions" Height="40" Width="250" Maximum="50" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True"/>
                     <Rectangle Height="25" Width="250"/>
