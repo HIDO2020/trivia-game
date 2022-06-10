@@ -23,12 +23,9 @@ namespace TriviaGraphic
     /// 
     public partial class ConnectUser : Page 
     {
-        //Communicator c = new Communicator();
-        //private Communicator C;
         string username;
         string password;
         string req;
-        //NetworkStream n = GLOBALS.stream;
         Communicator c = new Communicator();
 
         public ConnectUser()
@@ -48,6 +45,7 @@ namespace TriviaGraphic
             if (c.handleCommunicate(req))
             {
                 //MessageBox.Show(username + " " + password);
+                c.setName(username);
                 Home HomePage = new Home(c);
                 this.NavigationService.Navigate(HomePage);  
             }

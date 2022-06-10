@@ -20,14 +20,16 @@ namespace TriviaGraphic
     /// </summary>
     public partial class Create_Room : Page
     {
+        Communicator c;
         string _roomName;
         double _players;
         double _questions;
         double _time;
 
-        public Create_Room()
+        public Create_Room(Communicator comm)
         {
             InitializeComponent();
+            c = comm;
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

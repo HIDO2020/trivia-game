@@ -46,6 +46,7 @@ namespace TriviaGraphic
             {
                 Console.WriteLine(username + " " + password + " " + email);
                 //MessageBox.Show(username + " " + password + " " + email);
+                c.setName(username);
                 Home HomePage = new Home(c);
                 this.NavigationService.Navigate(HomePage);
             }

@@ -26,11 +26,12 @@ namespace TriviaGraphic
         {
             InitializeComponent();
             this.c = comm;
+            helloUSer.Content = "Hello,\n" + c.getName();
         }
 
         private void Create_Room_Click(object sender, RoutedEventArgs e)
         {
-            Create_Room CreateRoomPage = new Create_Room();
+            Create_Room CreateRoomPage = new Create_Room(c);
             this.NavigationService.Navigate(CreateRoomPage);
         }
 
@@ -47,7 +48,7 @@ namespace TriviaGraphic
 
         private void records_click(object sender, RoutedEventArgs e)
         {
-            Records RecordsPage = new Records();
+            Records RecordsPage = new Records(c);
             this.NavigationService.Navigate(RecordsPage);
         }
 

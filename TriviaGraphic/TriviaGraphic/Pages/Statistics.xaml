@@ -50,14 +50,14 @@
 
                 </ListBox>
                 <ListBox BorderThickness="0" HorizontalAlignment="Left" Height="305" Margin="295,0,0,0" VerticalAlignment="Top" Width="280" Background="{x:Null}">
+                    <Rectangle Height="15" Width="260"/>
+                    <Label x:Name="GamesPlayed" Content="0" Height="40" Width="260" FontWeight="Bold" FontSize="18"/>
                     <Rectangle Height="20" Width="260"/>
-                    <Label Content="10" Height="40" Width="260" />
-                    <Rectangle Height="20" Width="260"/>
-                    <Label Content="7" Height="40" Width="260" />
+                    <Label  x:Name="Correct" Content="0" Height="40" Width="260" FontWeight="Bold" FontSize="18"/>
                     <Rectangle Height="35" Width="260"/>
-                    <Label Content="3" Height="40" Width="260" />
-                    <Rectangle Height="20" Width="260"/>
-                    <Label Content="3.546" Height="40" Width="260" />
+                    <Label x:Name="Wrong" Content="0" Height="40" Width="260" FontWeight="Bold" FontSize="18"/>
+                    <Rectangle Height="25" Width="260"/>
+                    <Label x:Name="AvarageTime" Content="0" Height="40" Width="260" FontWeight="Bold" FontSize="18"/>
                 </ListBox>
             </Grid>
             <Border BorderBrush="#000" BorderThickness="1" HorizontalAlignment="Left" Height="61" Margin="168,22,0,0" VerticalAlignment="Top" Width="93"/>

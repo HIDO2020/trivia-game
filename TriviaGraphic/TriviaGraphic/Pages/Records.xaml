@@ -40,13 +40,13 @@
                     <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\third_icon.png" Height="70" Width="70"/>
                     <Rectangle Height="10" Width="60"/>
                 </ListBox>
-                <ListBox BorderThickness="0" HorizontalAlignment="Left" Height="305" Margin="120,0,0,0" VerticalAlignment="Top" Width="210" Background="{x:Null}">
+                <ListBox BorderThickness="0" Height="305" Margin="215,0,105,0" VerticalAlignment="Top" Background="{x:Null}">
                     <Rectangle Height="20" Width="195"/>
-                    <Label Content="user123" Height="40" Width="185" />
-                    <Rectangle Height="55" Width="185"/>
-                    <Label Content="user52" Height="40" Width="185" />
+                    <Label x:Name="First" Content="" FontWeight="Bold" FontSize="22" Height="40" Width="185" />
                     <Rectangle Height="60" Width="185"/>
-                    <Label Content="user628" Height="40" Width="185" />
+                    <Label x:Name="Second" Content="" FontWeight="Bold" FontSize="18" Height="40" Width="185" />
+                    <Rectangle Height="45" Width="185"/>
+                    <Label x:Name="Third" Content="" FontWeight="Bold" FontSize="16" Height="40" Width="185" />
                 </ListBox>
             </Grid>
             <Label HorizontalContentAlignment="Center" Content="RECORDS" Height="91" Margin="250,10,250,0" VerticalAlignment="Top" FontSize="60" FontWeight="Bold"/>

@@ -29,9 +29,21 @@ namespace TriviaGraphic
             InitializeComponent();
             this.c = comm;
             req = c.StatsSe();
-            MessageBox.Show(req);
+            //MessageBox.Show(req);
             answer = c.getData(req);
-            MessageBox.Show(answer);
+            //MessageBox.Show(answer);
+
+            var result = answer.Split('"')
+                     .Select((element, index) => index % 2 == 0  // If even index
+                                           ? element.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)  // Split the item
+                                           : new string[] { element })  // Keep the entire item
+                     .SelectMany(element => element).ToList();
+
+            GamesPlayed.Content = result[0];
+            Correct.Content = result[2];
+            int notCorrect = Int32.Parse(result[4]) - Int32.Parse(result[2]);
+            Wrong.Content = notCorrect.ToString();
+            AvarageTime.Content = result[6];
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

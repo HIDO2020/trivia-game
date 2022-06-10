@@ -31,6 +31,7 @@ namespace TriviaGraphic
     public class Communicator
     {
         NetworkStream _stream;
+        string _name;
 
         public Communicator()
         {
@@ -52,6 +53,16 @@ namespace TriviaGraphic
         public Communicator(NetworkStream stream)
         {
             this._stream = stream;
+        }
+
+        public void setName(string name)
+        {
+            this._name = name;
+        }
+
+        public string getName()
+        {
+            return this._name;
         }
 
         public NetworkStream getStream()
@@ -105,6 +116,9 @@ namespace TriviaGraphic
 
             Console.WriteLine(text);
 
+            text = getBetween(text, "[", "]");
+            Console.WriteLine(text);
+
             return text;
         }
 
@@ -138,6 +152,11 @@ namespace TriviaGraphic
         public string StatsSe()
         {          
             return "90000{}";
+        }
+
+        public string RecordsSe()
+        {
+            return "80000{}";
         }
 
         public string helper(string j, int code)

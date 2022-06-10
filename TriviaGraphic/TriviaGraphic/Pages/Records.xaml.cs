@@ -20,9 +20,29 @@ namespace TriviaGraphic
     /// </summary>
     public partial class Records : Page
     {
-        public Records()
+        Communicator c;
+        string req;
+        string answer;
+
+        public Records(Communicator comm)
         {
             InitializeComponent();
+            this.c = comm;
+            req = c.RecordsSe();
+            //MessageBox.Show(req);
+            answer = c.getData(req);
+            //MessageBox.Show(answer);
+
+            var result = answer.Split('"')
+                     .Select((element, index) => index % 2 == 0  // If even index
+                                           ? element.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)  // Split the item
+                                           : new string[] { element })  // Keep the entire item
+                     .SelectMany(element => element).ToList();
+
+            First.Content = result[0];
+            Second.Content = result[2];
+            Third.Content = result[4];
+            
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

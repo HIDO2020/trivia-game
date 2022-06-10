@@ -86,7 +86,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Communicator.cs" />
-    <Compile Include="GLOBALS.cs" />
     <Compile Include="Pages\ConnectUser.xaml.cs">
       <DependentUpon>ConnectUser.xaml</DependentUpon>
     </Compile>
