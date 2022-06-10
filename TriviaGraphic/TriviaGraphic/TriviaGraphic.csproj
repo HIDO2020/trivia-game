@@ -101,6 +101,9 @@
     <Compile Include="Pages\Room.xaml.cs">
       <DependentUpon>Room.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RoomJoin.xaml.cs">
+      <DependentUpon>RoomJoin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Statistics.xaml.cs">
       <DependentUpon>Statistics.xaml</DependentUpon>
     </Compile>
@@ -140,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Room.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RoomJoin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

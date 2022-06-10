@@ -24,7 +24,15 @@ namespace TriviaGraphic
     {
         public string username { get; set; }
         public string password { get; set; }
-    }
+    };
+
+    public struct CreateRoomRequest
+    {
+        public string roomName { get; set; }
+        public int maxUsers { get; set; }
+        public int questionCount { get; set; }
+        public int answerTimeout { get; set; }
+    };
 
 
 
@@ -145,6 +153,21 @@ namespace TriviaGraphic
                 email = log.email
             };
             string jsonString = JsonSerializer.Serialize<SignupRequest>(signupRequest);
+            //return jsonString;
+            return helper(jsonString, code);
+        }
+
+        public string CreateRoomSe(CreateRoomRequest log)
+        {
+            int code = (int)codes.create_;
+            var createRoomRequest = new CreateRoomRequest
+            {
+                roomName = log.roomName,
+                maxUsers = log.maxUsers,
+                questionCount = log.questionCount,
+                answerTimeout = log.answerTimeout
+            };
+            string jsonString = JsonSerializer.Serialize<CreateRoomRequest>(createRoomRequest);
             //return jsonString;
             return helper(jsonString, code);
         }

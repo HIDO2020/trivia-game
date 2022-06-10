@@ -22,9 +22,10 @@ namespace TriviaGraphic
     {
         Communicator c;
         string _roomName;
-        double _players;
-        double _questions;
-        double _time;
+        int _players;
+        int _questions;
+        int _time;
+        string req;
 
         public Create_Room(Communicator comm)
         {
@@ -40,15 +41,19 @@ namespace TriviaGraphic
         private void Send_Click(object sender, RoutedEventArgs e)
         {
             _roomName = RoomNameInput.Text;
- 
-            _players = Players.Value;
-            _questions = Questions.Value;
-            _time = Time.Value;
+            _players = (int)Players.Value;
+            _questions = (int)Questions.Value;
+            _time = (int)Time.Value;
 
             //Console.WriteLine(_roomName + " " + _players.ToString() + " " + _questions.ToString() + " " + _time.ToString());
             MessageBox.Show(_roomName + " " + _players.ToString() + " " + _questions.ToString() + " " + _time.ToString());
-            Room roomPage = new Room();
-            this.NavigationService.Navigate(roomPage);
+            CreateRoomRequest log = new CreateRoomRequest { roomName = _roomName, maxUsers = _players, questionCount = _questions, answerTimeout = _time };
+            req = c.CreateRoomSe(log);
+            if (c.handleCommunicate(req))
+            {
+                Room roomPage = new Room();
+                this.NavigationService.Navigate(roomPage);
+            }
         }
 
     }
