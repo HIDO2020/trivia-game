@@ -183,6 +183,11 @@ namespace TriviaGraphic
             return "80000{}";
         }
 
+        public string GetRooms()
+        {
+            return "60000{}";
+        }
+
         public string helper(string j, int code)
         {
             string res = "";

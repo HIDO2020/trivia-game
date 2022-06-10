@@ -52,5 +52,15 @@ namespace TriviaGraphic
             this.NavigationService.Navigate(RecordsPage);
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void join_room(object sender, RoutedEventArgs e)
+        {
+            SearchRoom joinRoomPage = new SearchRoom(c);
+            this.NavigationService.Navigate(joinRoomPage);
+        }
     }
 }

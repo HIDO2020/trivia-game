@@ -104,6 +104,9 @@
     <Compile Include="Pages\RoomJoin.xaml.cs">
       <DependentUpon>RoomJoin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SearchRoom.xaml.cs">
+      <DependentUpon>SearchRoom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Statistics.xaml.cs">
       <DependentUpon>Statistics.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\SearchRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Statistics.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -188,6 +195,9 @@
   <ItemGroup>
     <Folder Include="Pictures\" />
     <Folder Include="Themes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\refresh_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.4\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.4\build\System.Text.Json.targets')" />

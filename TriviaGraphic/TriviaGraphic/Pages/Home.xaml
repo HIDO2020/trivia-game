@@ -32,7 +32,7 @@
                     <RowDefinition Height="15*"/>
                 </Grid.RowDefinitions>
 
-                <Button Content="" Margin="10,46,250,0" VerticalAlignment="Top" Height="164" BorderBrush="#FFEEEE" Grid.RowSpan="2" >
+                <Button Content="" Margin="10,46,250,0" VerticalAlignment="Top" Height="164" BorderBrush="#FFEEEE" Grid.RowSpan="2" Click="join_room" >
                     <Button.Background>
                         <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\open_door.png"/>
                     </Button.Background>

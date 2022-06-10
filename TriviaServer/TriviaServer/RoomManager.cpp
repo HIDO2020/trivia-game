@@ -15,9 +15,12 @@ RoomManager::~RoomManager()
 
 void RoomManager::createRoom(std::string name, RoomData data)
 {
+	std::map<int, int> check;
+	check.clear();
 	Room r(data._RoomId, data._RoomName, data._MaxPlayers, data._AvgTime, data._Active);
 	std::pair<int, Room*> pair_toInsert(id_count, &r);
-	m_rooms.insert(pair_toInsert);
+	this->m_rooms.clear();
+	//this->m_rooms.insert(pair_toInsert);
 	_AmountOoRooms++;
 	id_count++;
 }
@@ -37,6 +40,8 @@ unsigned int RoomManager::getRoomState(int ID)
 std::vector<RoomData> RoomManager::getRooms()
 {
 	std::vector<RoomData> copy;
+	if (this->m_rooms.size() == 0)
+		return copy;
 	auto iter = this->m_rooms.begin();
 	while (iter != this->m_rooms.end())
 	{
