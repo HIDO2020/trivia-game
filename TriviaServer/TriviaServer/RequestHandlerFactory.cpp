@@ -4,6 +4,7 @@ RequestHandlerFactory::RequestHandlerFactory(IDataAccess& dataAccess, Statistics
 	, m_StatisticsManager(stats)
 {
 	this->m_loginManager = LoginManager(&dataAccess);
+	this->m_roomManager = RoomManager();
 }
 
 //RequestHandlerFactory::~RequestHandlerFactory()

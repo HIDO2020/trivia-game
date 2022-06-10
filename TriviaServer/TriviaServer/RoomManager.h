@@ -18,7 +18,7 @@ public:
 
 
 private:
-	std::map<int, Room*> m_rooms;	//room ID 
+	std::map<int, Room*>* m_rooms;	//room ID 
 	unsigned int _AmountOoRooms;
 };
 

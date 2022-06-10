@@ -164,7 +164,7 @@ RequestResult MenuRequestHandler::createRoom(RequestInfo info)
 	new_data._MaxPlayers = create.maxUsers;
 	new_data._RoomId = id_count;
 	new_data._RoomName = create.roomName;
-	m_roomManager.createRoom(create.roomName, new_data);
+	m_roomManager.createRoom(this->m_user, new_data);
 
 	RequestResult res;
 	res.newHandler = this;
