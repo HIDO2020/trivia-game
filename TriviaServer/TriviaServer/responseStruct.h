@@ -1,9 +1,9 @@
 #pragma once
-#include <iostream>
-#include <string>
 #include <vector>
 #include "Room.h"
-
+#include <iostream>
+#include <string>
+class Room;
 
 struct SignupResponse
 {
@@ -54,6 +54,30 @@ struct JoinRoomResponse
 };
 
 struct CreateRoomResponse
+{
+    unsigned int status;
+};
+
+struct CloseRoomResponse
+{
+    unsigned int status;
+};
+
+struct StartGameResponse
+{
+    unsigned int status;
+};
+
+struct GetRoomStateResponse
+{
+    unsigned int status;
+    bool hasGameBegun;
+    std::vector<std::string> players;
+    unsigned int questionCount;
+    unsigned int answerTimeout;
+};
+
+struct LeaveRoomResponse
 {
     unsigned int status;
 };

@@ -40,9 +40,9 @@ int main()
 	/*std::vector<std::string> namesSave = s1.getUserStatistics("nativ");
 	for (auto i : namesSave)
 		std::cout << i << std::endl;*/
-	LoggedUser test2("arnon");
+	//LoggedUser test2("arnon");
 	RequestHandlerFactory fact(dataAccess, stats);
-	MenuRequestHandler* menu = fact.createMenuRequestHandler(test2);
+	//MenuRequestHandler* menu = fact.createMenuRequestHandler(test2);
 	SignupResponse message1;
 	message1.status = 100;
 	std::vector<unsigned char> test = JsonResponsePacketSerializer::serializeResponse(message1);

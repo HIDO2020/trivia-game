@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <WinSock2.h>
+#include <Windows.h>
 
 class LoggedUser
 {
@@ -13,5 +15,6 @@ public:
 
 private:
 	std::string m_username;
+	SOCKET s;
 };
 #endif

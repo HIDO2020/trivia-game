@@ -110,8 +110,6 @@ std::string Communicator::convertToString(char* a, int start, int end)
 
 void Communicator::handleNewClient(SOCKET clientSocket)
 {
-	/*SqliteDatabase db_backup;
-	db_backup = m_;*/
 	std::vector<unsigned char> vec;
 	RequestResult res;
 	SignupRequest sign;
@@ -119,14 +117,15 @@ void Communicator::handleNewClient(SOCKET clientSocket)
 	RequestInfo info;
 	//LoginRequestHandler* log_handler = m_handlerFactory.createLoginRequestHandler();
 	int len, count = 0;
-	std::cout << "hi";
+	//std::cout << "hi";
 
 	while (true)
 	{
 		char m[LEN_OF_MESSAGE]{};
 		int x = recv(clientSocket, m, LEN_OF_MESSAGE, 0);
 
-		if (x == -1)
+		//std::cout << "hi! reciebe: " << m << std::endl;
+		if (x == -1 || m[0] == NULL)
 		{
 			std::cout << "client has disconnected!" << std::endl;
 			break;
@@ -143,7 +142,11 @@ void Communicator::handleNewClient(SOCKET clientSocket)
 		res = it->second->handleRequest(info);
 		//this->m_handlerFactory.getLoginManager().;
 		vec = res.response;
-		it->second = res.newHandler;
+
+		if (res.newHandler == NULL)
+			std::cout << "illegal request!";
+		else
+			it->second = res.newHandler;
 
 		std::cout << "received: " << m << std::endl;
 
@@ -154,6 +157,9 @@ void Communicator::handleNewClient(SOCKET clientSocket)
 
 				//convert to char vector in order to send the message
 		std::vector<char> newOne = std::vector<char>(vec.begin(), vec.end());
+		for (int i = 0; i < newOne.size(); i++) {
+			std::cout << newOne[i];
+		}
 		send(clientSocket, &newOne[0], vec.size(), 0);
 	}
 }

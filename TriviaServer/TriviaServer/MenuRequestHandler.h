@@ -1,11 +1,13 @@
 #pragma once
-#include "IRequestHandler.h"
-#include "LoginManager.h"
 #include "RequestHandlerFactory.h"
+#include "RoomAdminRequestHandler.h"
 #include "Communicator.h"
 #include "LoggedUser.h"
+#include "IRequestHandler.h"
+#include "LoginManager.h"
 class LoggedUser;
 class RequestHandlerFactory;
+class IRequestHandler;
 
 class MenuRequestHandler : public IRequestHandler
 {

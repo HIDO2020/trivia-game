@@ -52,7 +52,7 @@ bool LoginManager::LogOut(std::string name)
 {
     int j = 0;
     int size = m_loggedUsers.size();
-    LoggedUser l(name);
+    //LoggedUser l(name);
 
     for (auto& i : m_loggedUsers) 
     {

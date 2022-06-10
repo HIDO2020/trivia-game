@@ -97,6 +97,45 @@ std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(GetPe
 	return JsonResponsePacketSerializer::helper(j, code);
 }
 
+std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(CloseRoomResponse close_r)
+{
+	json j = { {"status", close_r.status} };
+	unsigned char code = (unsigned char)close_r_;
+	return JsonResponsePacketSerializer::helper(j, code);
+}
+
+std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(StartGameResponse start_g)
+{
+	json j = { {"status", start_g.status} };
+	unsigned char code = (unsigned char)start_g_;
+	return JsonResponsePacketSerializer::helper(j, code);
+}
+
+std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(GetRoomStateResponse get_state)
+{
+	json j = { {"status", get_state.status} };
+
+	j["hasGameBegun"] = get_state.hasGameBegun;
+
+	for (int i = 0; i < get_state.players.size(); i++)
+	{
+		j["players"].push_back(get_state.players[i]);
+	}
+	j["answerTimeout"] = get_state.answerTimeout;
+
+	j["numOfQuestionsInGame"] = get_state.questionCount;
+
+	unsigned char code = (unsigned char)getPersonalStats_;
+	return JsonResponsePacketSerializer::helper(j, code);
+}
+
+std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(LeaveRoomResponse leave_r)
+{
+	json j = { {"status", leave_r.status} };
+	unsigned char code = (unsigned char)leave_r_;
+	return JsonResponsePacketSerializer::helper(j, code);
+}
+
 std::vector<unsigned char> JsonResponsePacketSerializer::helper(json j, int code)
 {
 	//unsigned char zer = '0';

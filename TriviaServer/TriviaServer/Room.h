@@ -8,16 +8,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<time.h>
+//#include communicator //makes 282 fucking errors :)
 #include "LoggedUser.h"
 
 
-typedef struct {
+struct RoomData{
 	unsigned int _RoomId;
 	std::string _RoomName;
+	unsigned int numOfQuestionsInGame;
 	unsigned int _MaxPlayers;
 	unsigned int _AvgTime;
 	unsigned int _Active;
-}RoomData;
+};
 
 class Room
 {
@@ -31,9 +33,10 @@ public:
 
 	unsigned int getRoomState();
 	RoomData getRoomData();
+	//std::map<SOCKET, std::string> get_socket();
 
 private:
 	RoomData m_metadata;
 	std::vector<LoggedUser> m_users;		//change to LoggedUser
-
+	//std::map<SOCKET, std::string> m_socket;
 };

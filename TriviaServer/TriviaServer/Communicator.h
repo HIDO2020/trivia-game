@@ -33,6 +33,8 @@ public:
 	void startHandleRequest(SOCKET clientSocket);
 	std::string convertToString(char* a, int start, int end);
 
+	std::map<SOCKET, IRequestHandler*> get_clients(); //??
+
 private:
 	void bindAndListen(int port);
 	void handleNewClient(SOCKET clientSocket);

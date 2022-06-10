@@ -20,27 +20,35 @@ Room::~Room()
 	this->m_users.clear();
 }
 
-void Room::addUser(LoggedUser user)
+void Room::addUser(LoggedUser user) //void Room::addUser(LoggedUser user, SOCKET s)
 {
-	this->m_users.push_back(user.getUsername());
+	this->m_users.push_back(user);
+	//this->m_socket.insert(std::make_pair(s, user.getUsername()));
 }
 
 void Room::removeUser(LoggedUser user)
 {
 	int j = 0;
 	int size = m_users.size();
-	LoggedUser l(user.getUsername());
+	//LoggedUser l(user.getUsername());
 
 	for (auto& i : m_users)
 	{
 		if (i.getUsername() == user.getUsername())
 		{
 			m_users.erase(m_users.begin() + j);
-			return;
+			break;
 		}
 		j++;
 	}
 
+	/*for (auto it = m_socket.begin(); it != m_socket.end(); ++it) {
+		if (it->second == user.getUsername())
+		{
+			m_socket.erase(it);
+			return;
+		}
+	}*/
 }
 
 std::vector<std::string> Room::getAllUsers()
@@ -60,4 +68,9 @@ RoomData Room::getRoomData()
 {
 	return this->m_metadata;
 }
+
+//std::map<SOCKET, std::string> Room::get_socket()
+//{
+//	return m_socket;
+//}
 
