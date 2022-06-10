@@ -20,15 +20,17 @@ namespace TriviaGraphic
     /// </summary>
     public partial class Statistics : Page
     {
+        Communicator c;
         string req;
         string answer;
 
-        public Statistics()
+        public Statistics(Communicator comm)
         {
             InitializeComponent();
-            req = GLOBALS.f_comm.StatsSe();
+            this.c = comm;
+            req = c.StatsSe();
             MessageBox.Show(req);
-            answer = GLOBALS.f_comm.getData(req);
+            answer = c.getData(req);
             MessageBox.Show(answer);
         }
 

@@ -13,14 +13,14 @@ namespace TriviaGraphic
 {
     enum codes { Error_, signup_, login_, logout_, join_, create_, getRoom_, getPlayers_, getHighScore_, getPersonalStats_ };
 
-    struct SignupRequest
+    public struct SignupRequest
     {
         public string username { get; set; }
         public string password { get; set; }
         public string email { get; set; }
     };
 
-    struct LoginRequest
+    public struct LoginRequest
     {
         public string username { get; set; }
         public string password { get; set; }
@@ -28,9 +28,10 @@ namespace TriviaGraphic
 
 
 
-    class Communicator
+    public class Communicator
     {
         NetworkStream _stream;
+
         public Communicator()
         {
             TcpClient client = new TcpClient();
@@ -46,6 +47,16 @@ namespace TriviaGraphic
             var text = System.Text.Encoding.ASCII.GetString(buffer);
 
             Console.WriteLine(text);
+        }
+
+        public Communicator(NetworkStream stream)
+        {
+            this._stream = stream;
+        }
+
+        public NetworkStream getStream()
+        {
+            return this._stream;
         }
 
         public static string getBetween(string strSource, string strStart, string strEnd)

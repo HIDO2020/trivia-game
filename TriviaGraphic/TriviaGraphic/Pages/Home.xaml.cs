@@ -20,9 +20,12 @@ namespace TriviaGraphic
     /// </summary>
     public partial class Home : Page
     {
-        public Home()
+        Communicator c;
+
+        public Home(Communicator comm)
         {
             InitializeComponent();
+            this.c = comm;
         }
 
         private void Create_Room_Click(object sender, RoutedEventArgs e)
@@ -38,7 +41,7 @@ namespace TriviaGraphic
 
         private void stats_Click(object sender, RoutedEventArgs e)
         {
-            Statistics StatisticsPage = new Statistics();
+            Statistics StatisticsPage = new Statistics(this.c);
             this.NavigationService.Navigate(StatisticsPage);
         }
 

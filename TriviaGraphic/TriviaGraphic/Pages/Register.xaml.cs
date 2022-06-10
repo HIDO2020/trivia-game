@@ -20,14 +20,16 @@ namespace TriviaGraphic
     /// </summary>
     public partial class Register : Page
     {
+        Communicator c;
         string username;
         string password;
         string email;
         string req;
 
-        public Register()
+        public Register(Communicator comm)
         {
             InitializeComponent();
+            this.c = comm;
         }
 
         private void signup_click(object sender, RoutedEventArgs e)
@@ -38,13 +40,13 @@ namespace TriviaGraphic
 
             SignupRequest log = new SignupRequest { username = username, password = password, email = email};
 
-            req = GLOBALS.f_comm.RegisterSe(log);
+            req = c.RegisterSe(log);
             //MessageBox.Show(req);
-            if (GLOBALS.f_comm.handleCommunicate(req))
+            if (c.handleCommunicate(req))
             {
                 Console.WriteLine(username + " " + password + " " + email);
                 //MessageBox.Show(username + " " + password + " " + email);
-                Home HomePage = new Home();
+                Home HomePage = new Home(c);
                 this.NavigationService.Navigate(HomePage);
             }
             else

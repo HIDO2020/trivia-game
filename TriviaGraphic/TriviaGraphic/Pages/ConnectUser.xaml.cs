@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,10 +24,12 @@ namespace TriviaGraphic
     public partial class ConnectUser : Page 
     {
         //Communicator c = new Communicator();
+        //private Communicator C;
         string username;
         string password;
         string req;
-        
+        //NetworkStream n = GLOBALS.stream;
+        Communicator c = new Communicator();
 
         public ConnectUser()
         {
@@ -39,14 +42,14 @@ namespace TriviaGraphic
             password = PasswordInput.Password;
             Console.WriteLine(username + " " + password);
             LoginRequest log = new LoginRequest { username = username, password = password };
-
-            req = GLOBALS.f_comm.LoginSe(log);
+            
+            req = c.LoginSe(log);
             //MessageBox.Show(req);
-            if (GLOBALS.f_comm.handleCommunicate(req))
+            if (c.handleCommunicate(req))
             {
                 //MessageBox.Show(username + " " + password);
-                Home HomePage = new Home();
-                this.NavigationService.Navigate(HomePage);
+                Home HomePage = new Home(c);
+                this.NavigationService.Navigate(HomePage);  
             }
             else
             {
@@ -57,7 +60,7 @@ namespace TriviaGraphic
         private void signup_click(object sender, RoutedEventArgs e)
         {
 
-            Register registerPage = new Register();
+            Register registerPage = new Register(c);
             this.NavigationService.Navigate(registerPage);
         }
     }
