@@ -106,7 +106,7 @@ namespace TriviaGraphic
 
         }
 
-        public RoomJoin(Communicator comm, int id)
+        public RoomJoin(Communicator comm, int id, string room_name)
         {
             InitializeComponent();
             c = comm;
@@ -117,6 +117,8 @@ namespace TriviaGraphic
             req = c.JoinRoomSe(logJ);
             MessageBox.Show(req);
             answer = c.getData(req);
+
+            roomName.Content = room_name;
 
             /*
                PARTICIPANTS LIST   

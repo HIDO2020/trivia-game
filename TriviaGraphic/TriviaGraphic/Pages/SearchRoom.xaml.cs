@@ -23,25 +23,24 @@ namespace TriviaGraphic
         string req;
         string answer;
         int id = 0;
+        string tags;
         string _ID;
+        string _NAME;
 
         Communicator c = new Communicator();
 
         private void Room_Clicked(object sender, RoutedEventArgs e)
         {
             var myValue = ((Button)sender).Tag;
-            id = Int32.Parse((string)myValue); 
-            //MessageBox.Show(id.ToString());
+            _ID = (string)myValue;
+            _NAME = _ID.Substring(2);
+            _ID = _ID.Substring(0, 2);
+            id = Int32.Parse(_ID);
+
             GetPlayersInRoomRequest log = new GetPlayersInRoomRequest { id = id };
             req = c.getPlayersSe(log);
-            //MessageBox.Show(req);
             answer = c.getData(req);
             MessageBox.Show(answer);
-            //List<string> result = answer.Split('"')
-            //        .Select((element, index) => index % 2 == 0  // If even index
-            //                              ? element.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)  // Split the item
-            //                              : new string[] { element })  // Keep the entire item
-            //        .SelectMany(element => element).ToList();
         }
 
         public SearchRoom(Communicator comm)
@@ -63,10 +62,13 @@ namespace TriviaGraphic
             {
                 _ID = result[i - 3].Remove(0, 1);
                 _ID = _ID.Remove(_ID.Length - 1);
-                var btn1 = new Button { Content = result[i] };
+                _NAME = result[i];
+                var btn1 = new Button { Content = _NAME };
                 btn1.FontSize = 18;
                 btn1.Click += Room_Clicked;
-                btn1.Tag += _ID;
+                tags += _ID;
+                tags += _NAME;
+                btn1.Tag = tags;
                 items.Add(btn1);
             }
             RoomsList.ItemsSource = items;
@@ -89,7 +91,7 @@ namespace TriviaGraphic
                 MessageBox.Show("Select Room");
             else
             {
-                RoomJoin RoomPage = new RoomJoin(c, id);
+                RoomJoin RoomPage = new RoomJoin(c, id, _NAME);
                 this.NavigationService.Navigate(RoomPage);
             }
         }
