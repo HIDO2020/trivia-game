@@ -110,6 +110,10 @@ namespace TriviaGraphic
             c = comm;
             //WaitingAdmin.Content = "Waiting For" + adminName + "To Start..";
 
+            /*
+               PARTICIPANTS LIST   
+            */
+
             GetPlayersInRoomRequest log = new GetPlayersInRoomRequest { id = id };
             req = c.getPlayersSe(log);
             MessageBox.Show(req);

@@ -41,7 +41,7 @@
                     <Label Content="Time For&#xA;Question:" Height="65" Width="135" Background="{x:Null}" FontWeight="Bold" FontSize="20" />
 
                 </ListBox>
-                <ListBox x:Name="Players_List" BorderThickness="1" HorizontalAlignment="Left" Margin="315,38,0,177" Width="220" BorderBrush="#000000" Opacity="100">
+                <ListBox x:Name="Players_List" BorderThickness="1" HorizontalAlignment="Left" Margin="315,38,0,195" Width="220" BorderBrush="#000000" Opacity="100">
 
                 </ListBox>
                 <Grid HorizontalAlignment="Left" Height="235" Margin="235,10,0,0" VerticalAlignment="Top" Width="60">
@@ -50,11 +50,11 @@
                     </Grid.RowDefinitions>
                     <ListBox BorderThickness="0" HorizontalAlignment="Left" Height="220" VerticalAlignment="Top" Width="55" Background="{x:Null}" Margin="5,5,0,0">
                         <Rectangle Height="5" Width="40"/>
-                        <Label Content="1" ContentStringFormat="{}{0:#}" Height="35" Width="40" FontWeight="Bold" FontSize="18"/>
+                        <Label x:Name="_players" Content="" ContentStringFormat="{}{0:#}" Height="35" Width="40" FontWeight="Bold" FontSize="18"/>
                         <Rectangle Height="30" Width="40"/>
-                        <Label  Content="2" Height="35" Width="40" FontWeight="Bold" FontSize="18"/>
+                        <Label x:Name="_questions" Content="" Height="35" Width="40" FontWeight="Bold" FontSize="18"/>
                         <Rectangle Height="30" Width="40"/>
-                        <Label  Content="3" Height="35" Width="40" FontWeight="Bold" FontSize="18"/>
+                        <Label x:Name="_time" Content="" Height="35" Width="40" FontWeight="Bold" FontSize="18"/>
 
                     </ListBox>
                 </Grid>

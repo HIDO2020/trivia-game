@@ -112,6 +112,16 @@ namespace TriviaGraphic
             c = comm;
             //WaitingAdmin.Content = "Waiting For" + adminName + "To Start..";
 
+
+            JoinRoomRequest logJ = new JoinRoomRequest { id = id };
+            req = c.JoinRoomSe(logJ);
+            MessageBox.Show(req);
+            answer = c.getData(req);
+
+            /*
+               PARTICIPANTS LIST   
+            */
+
             GetPlayersInRoomRequest log = new GetPlayersInRoomRequest { id = id };
             req = c.getPlayersSe(log);
             MessageBox.Show(req);
