@@ -38,7 +38,7 @@ namespace TriviaGraphic
             }
             else
             {
-                MessageBox.Show("BackgroundWorker ended successfully");
+                //MessageBox.Show("BackgroundWorker ended successfully");
             }
         }
 
