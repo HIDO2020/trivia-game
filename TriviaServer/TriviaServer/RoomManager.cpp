@@ -13,7 +13,7 @@ RoomManager::~RoomManager()
 	//this->m_rooms->clear();
 }
 
-void RoomManager::createRoom(LoggedUser name, RoomData data)
+Room RoomManager::createRoom(LoggedUser name, RoomData data)
 {
 	//std::map<int, int> check;
 	//check.clear();
@@ -24,6 +24,7 @@ void RoomManager::createRoom(LoggedUser name, RoomData data)
 	this->m_rooms->insert({id_count, r});
 	_AmountOoRooms++;
 	id_count++;
+	return *r;
 }
 
 void RoomManager::deleteRoom(int ID)

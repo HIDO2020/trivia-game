@@ -143,14 +143,15 @@ void Communicator::handleNewClient(SOCKET clientSocket)
 		res = it->second->handleRequest(info, clientSocket);
 		//this->m_handlerFactory.getLoginManager().;
 		vec = res.response;
-		it->second = res.newHandler;
 
 		std::cout << "received: " << m << std::endl;
 
-		/*if (info.id == signup_)
-			sign = JsonRequestPacketDeserializer::deserializeSignupRequest(info.buffer);
-		else if (info.id == login_)
-			login = JsonRequestPacketDeserializer::deserializeLoginRequest(info.buffer);*/
+		if (res.newHandler == NULL)
+			std::cout << "illegal request!";
+		else
+			it->second = res.newHandler;
+
+		std::cout << "received: " << m << std::endl;
 
 				//convert to char vector in order to send the message
 		std::vector<char> newOne = std::vector<char>(vec.begin(), vec.end());

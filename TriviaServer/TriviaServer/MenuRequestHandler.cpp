@@ -145,7 +145,7 @@ RequestResult MenuRequestHandler::joinRoom(RequestInfo info)
 	m_roomManager.getRoomInfo().find(req.roomId)->second->addUser(m_user.getUser());
 	
 	RequestResult res;
-	res.newHandler = this;
+	res.newHandler = m_handleFactory.createRoomMemberRequestHandler(m_user, *(m_roomManager.getRoomInfo().find(req.roomId)->second));
 
 	std::vector<unsigned char> vec = JsonResponsePacketSerializer::serializeResponse(join_res);
 	res.response = vec;
@@ -165,10 +165,11 @@ RequestResult MenuRequestHandler::createRoom(RequestInfo info)
 	new_data._RoomId = id_count;
 	create_res.status = id_count;			//return room id
 	new_data._RoomName = create.roomName;
-	m_roomManager.createRoom(this->m_user, new_data);
+	new_data.numOfQuestionsInGame = create.questionCount;
+	Room new_room = m_roomManager.createRoom(this->m_user, new_data);
 
 	RequestResult res;
-	res.newHandler = this;
+	res.newHandler = this->m_handleFactory.createRoomAdminRequestHandler(this->m_user, new_room);
 
 	std::vector<unsigned char> vec = JsonResponsePacketSerializer::serializeResponse(create_res);
 	res.response = vec;

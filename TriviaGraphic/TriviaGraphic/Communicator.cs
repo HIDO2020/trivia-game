@@ -216,6 +216,18 @@ namespace TriviaGraphic
             return helper(jsonString, code);
         }
 
+        public string getPlayersAdminSe(GetPlayersInRoomRequest log)
+        {
+            char code = '<';
+            var getPlayersInRoomRequest = new GetPlayersInRoomRequest
+            {
+                id = log.id
+            };
+            string jsonString = JsonSerializer.Serialize<GetPlayersInRoomRequest>(getPlayersInRoomRequest);
+            //return jsonString;
+            return helper2(jsonString, code);
+        }
+
         public string getPlayersSe(GetPlayersInRoomRequest log)
         {
             int code = (int)codes.getPlayers_;
@@ -243,7 +255,24 @@ namespace TriviaGraphic
             return "60000{}";
         }
 
+        public string LeaveRoomSe()
+        {
+            return "=0000{}";
+        }
+
         public string helper(string j, int code)
+        {
+            string res = "";
+            res += code.ToString();
+            int size = j.Length;
+            res += size.ToString();
+            while (res.Length < 5)
+                res += 0;
+            res += j;
+            return res;
+        }
+
+        public string helper2(string j, char code)
         {
             string res = "";
             res += code.ToString();

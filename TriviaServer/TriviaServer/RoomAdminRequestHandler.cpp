@@ -94,7 +94,8 @@ RequestResult RoomAdminRequestHandler::getRoomState(RequestInfo info)
 	GetRoomStateResponse state;
 	RoomData data = this->m_room.getRoomData();
 	state.hasGameBegun = data._Active;
-	state.players = this->m_room.getAllUsers();
+	//state.players = this->m_room.getAllUsers();
+	state.players = this->m_roomManager.getRoomInfo().find(m_room.getRoomData()._RoomId)->second->getAllUsers();
 	state.answerTimeout = data._AvgTime;
 	state.questionCount = data.numOfQuestionsInGame;
 	state.status = 1;
