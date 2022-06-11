@@ -89,18 +89,8 @@ namespace TriviaGraphic
                 MessageBox.Show("Select Room");
             else
             {
-                JoinRoomRequest log = new JoinRoomRequest { id = id };
-                req = c.JoinRoomSe(log);
-                MessageBox.Show(req);
-                if (c.handleCommunicate(req))
-                {      
-                    RoomJoin RoomPage = new RoomJoin(c, id);
-                    this.NavigationService.Navigate(RoomPage);
-                }
-                else
-                {
-                    MessageBox.Show("User Does Not Exist!");
-                }
+                RoomJoin RoomPage = new RoomJoin(c, id);
+                this.NavigationService.Navigate(RoomPage);
             }
         }
     }

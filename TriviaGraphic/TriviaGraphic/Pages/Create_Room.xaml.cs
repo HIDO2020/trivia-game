@@ -49,9 +49,10 @@ namespace TriviaGraphic
             MessageBox.Show(_roomName + " " + _players.ToString() + " " + _questions.ToString() + " " + _time.ToString());
             CreateRoomRequest log = new CreateRoomRequest { name = _roomName, max_users = _players, question_count = _questions, answer_timeout = _time };
             req = c.CreateRoomSe(log);
-            if (c.handleCommunicate(req))
+            int error = c.getRoomID(req);
+            if (error != 0)
             {
-                Room roomPage = new Room();
+                Room roomPage = new Room(c, error);
                 this.NavigationService.Navigate(roomPage);
             }
         }

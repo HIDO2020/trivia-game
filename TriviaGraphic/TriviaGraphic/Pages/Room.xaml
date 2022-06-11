@@ -40,19 +40,8 @@
                     <Label Content="Time For&#xA;Question:" Height="65" Width="135" Background="{x:Null}" FontWeight="Bold" FontSize="20" />
 
                 </ListBox>
-                <ListBox BorderThickness="1" HorizontalAlignment="Left" Margin="315,10,0,10" Width="255" BorderBrush="#000000" Opacity="100">
-                    <Label  FontWeight="Bold" FontSize="20" Content="Current Participants:" Height="35" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
-
-
+                <ListBox x:Name="Players_List" BorderThickness="1" HorizontalAlignment="Left" Margin="315,10,0,10" Width="255" BorderBrush="#000000" Opacity="100">
+                    
                 </ListBox>
                 <Grid HorizontalAlignment="Left" Height="235" Margin="235,10,0,0" VerticalAlignment="Top" Width="60">
                     <Grid.RowDefinitions>

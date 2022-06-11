@@ -124,6 +124,26 @@ namespace TriviaGraphic
             return true;
         }
 
+        public int getRoomID(string req)
+        {
+            Console.WriteLine(req);
+            byte[] buffer = new ASCIIEncoding().GetBytes(req);
+
+            this._stream.Write(buffer, 0, buffer.Length);
+            this._stream.Flush();
+            buffer = new byte[4096];
+            int bytesRead = this._stream.Read(buffer, 0, 4096);
+            string text = System.Text.Encoding.ASCII.GetString(buffer);
+
+            Console.WriteLine(text);
+
+            text = getBetween(text, "{", "}");
+            Console.WriteLine(text);
+            text = text.Substring(Math.Max(0, text.Length - 2)); ;
+            Console.WriteLine(text);
+            return Int32.Parse(text);
+        }
+
         public string getData(string req)
         {
             Console.WriteLine(req);
