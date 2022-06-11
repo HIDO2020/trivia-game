@@ -60,7 +60,6 @@ namespace TriviaGraphic
                 }
                 i++;
             }
-            WaitingAdmin.Content = "Waiting For " + adminName + " To Start..";
             foreach (var item in items.Values.ToList())
             {
                 if (!(_names.Contains(item.Content)))
@@ -156,6 +155,9 @@ namespace TriviaGraphic
             /*
              CLOSE ROOM REQUEST
              */
+            string request = c.CloseRoomSe();
+            //MessageBox.Show(request);
+            string _get = c.getData(request);
             this.NavigationService.GoBack();
         }
     }

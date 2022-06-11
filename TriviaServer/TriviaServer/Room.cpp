@@ -20,11 +20,15 @@ Room::~Room()
 	this->m_users.clear();
 }
 
-void Room::addUser(LoggedUser user)
+bool Room::addUser(LoggedUser user) 
 {
-	this->m_users.push_back(user);
+	if (this->getAllUsers().size() < this->getRoomData()._MaxPlayers)
+		this->m_users.push_back(user);
+	else
+		return false;
+	return true;
+	//this->m_socket.insert(std::make_pair(s, user.getUsername()));
 }
-
 void Room::removeUser(LoggedUser user)
 {
 	int j = 0;

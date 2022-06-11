@@ -138,11 +138,12 @@ RequestResult MenuRequestHandler::getHighScore(RequestInfo)
 RequestResult MenuRequestHandler::joinRoom(RequestInfo info)
 {
 	JoinRoomResponse join_res;
-	join_res.status = 1;
+	join_res.status = 0;
 
 	JoinRoomRequest req = JsonRequestPacketDeserializer::deserializeJoinRoomRequest(info.buffer);
 
-	m_roomManager.getRoomInfo().find(req.roomId)->second->addUser(m_user.getUser());
+	if(m_roomManager.getRoomInfo().find(req.roomId)->second->addUser(m_user.getUser()))
+		join_res.status = 1;
 	
 	RequestResult res;
 	res.newHandler = m_handleFactory.createRoomMemberRequestHandler(m_user, *(m_roomManager.getRoomInfo().find(req.roomId)->second));

@@ -260,6 +260,11 @@ namespace TriviaGraphic
             return "=0000{}";
         }
 
+        public string CloseRoomSe()
+        {
+            return ":0000{}";
+        }
+
         public string helper(string j, int code)
         {
             string res = "";

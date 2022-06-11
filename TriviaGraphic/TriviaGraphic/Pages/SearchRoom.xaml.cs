@@ -92,8 +92,18 @@ namespace TriviaGraphic
                 MessageBox.Show("Select Room");
             else
             {
-                RoomJoin RoomPage = new RoomJoin(c, id, _NAME);
-                this.NavigationService.Navigate(RoomPage);
+                JoinRoomRequest logJ = new JoinRoomRequest { id = id };
+                req = c.JoinRoomSe(logJ);
+                //MessageBox.Show(req);
+                if (!(c.handleCommunicate(req)))
+                {
+                    MessageBox.Show("The Romm Is Full!");
+                }
+                else
+                {
+                    RoomJoin RoomPage = new RoomJoin(c, id, _NAME);
+                    this.NavigationService.Navigate(RoomPage);
+                }
             }
         }
     }

@@ -118,14 +118,15 @@ void Communicator::handleNewClient(SOCKET clientSocket)
 	LoginRequest login;
 	RequestInfo info;
 	//LoginRequestHandler* log_handler = m_handlerFactory.createLoginRequestHandler();
-	int len, count = 0;
+	int len, count = 0, x = 0;
 	//std::cout << "hi";
 
 	while (true)
 	{
 		char m[LEN_OF_MESSAGE]{};
-		int x = recv(clientSocket, m, LEN_OF_MESSAGE, 0);
 
+		x = recv(clientSocket, m, LEN_OF_MESSAGE, 0);
+		
 		if (x == -1)
 		{
 			std::cout << "client has disconnected!" << std::endl;
@@ -159,6 +160,7 @@ void Communicator::handleNewClient(SOCKET clientSocket)
 			std::cout << newOne[i];
 		}
 		send(clientSocket, &newOne[0], vec.size(), 0);
+		
 	}
 }
 

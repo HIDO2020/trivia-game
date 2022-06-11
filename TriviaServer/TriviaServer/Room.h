@@ -26,7 +26,7 @@ public:
 	Room(unsigned int RoomId, std::string RoomName, unsigned int MaxPlayers, unsigned int AvgTime, unsigned int Active);
 	~Room();
 
-	void addUser(LoggedUser user);
+	bool addUser(LoggedUser user);
 	void removeUser(LoggedUser user);
 	std::vector<std::string> getAllUsers();
 	std::vector<LoggedUser> get_sockets();
