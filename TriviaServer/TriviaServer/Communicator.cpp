@@ -140,7 +140,7 @@ void Communicator::handleNewClient(SOCKET clientSocket)
 		vec.clear();
 
 		auto it = this->m_clients.find(clientSocket);
-		res = it->second->handleRequest(info);
+		res = it->second->handleRequest(info, clientSocket);
 		//this->m_handlerFactory.getLoginManager().;
 		vec = res.response;
 		it->second = res.newHandler;

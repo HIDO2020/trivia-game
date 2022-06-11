@@ -14,7 +14,7 @@ bool MenuRequestHandler::isRequestRelevant(RequestInfo info)
 	return false;
 }
 
-RequestResult MenuRequestHandler::handleRequest(RequestInfo info)
+RequestResult MenuRequestHandler::handleRequest(RequestInfo info, SOCKET clientSocket)
 {
 	ErrorResponse err_mes;
 	err_mes.message = "Error!";

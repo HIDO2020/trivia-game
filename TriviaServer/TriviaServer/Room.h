@@ -17,6 +17,7 @@ typedef struct {
 	unsigned int _MaxPlayers;
 	unsigned int _AvgTime;
 	unsigned int _Active;
+	unsigned int numOfQuestionsInGame;
 }RoomData;
 
 class Room
@@ -28,7 +29,7 @@ public:
 	void addUser(LoggedUser user);
 	void removeUser(LoggedUser user);
 	std::vector<std::string> getAllUsers();
-
+	std::vector<LoggedUser> get_sockets();
 	unsigned int getRoomState();
 	RoomData getRoomData();
 

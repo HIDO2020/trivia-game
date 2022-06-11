@@ -33,7 +33,7 @@ bool LoginManager::SignUp(std::string name, std::string pass, std::string email)
     }
 }
 
-bool LoginManager::LogIn(std::string name, std::string pass)
+bool LoginManager::LogIn(std::string name, std::string pass, SOCKET clientSocket)
 {
     //std::cout << this->m_database;
     if (!(m_database->DoesPasswordMatch(name, pass)))
@@ -43,7 +43,7 @@ bool LoginManager::LogIn(std::string name, std::string pass)
     }
     else
     {
-        this->m_loggedUsers.push_back(LoggedUser(name));
+        this->m_loggedUsers.push_back(LoggedUser(name, clientSocket));
         return true;
     }
 }
@@ -52,7 +52,6 @@ bool LoginManager::LogOut(std::string name)
 {
     int j = 0;
     int size = m_loggedUsers.size();
-    LoggedUser l(name);
 
     for (auto& i : m_loggedUsers) 
     {

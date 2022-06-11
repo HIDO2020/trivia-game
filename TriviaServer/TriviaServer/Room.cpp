@@ -22,14 +22,13 @@ Room::~Room()
 
 void Room::addUser(LoggedUser user)
 {
-	this->m_users.push_back(user.getUsername());
+	this->m_users.push_back(user);
 }
 
 void Room::removeUser(LoggedUser user)
 {
 	int j = 0;
 	int size = m_users.size();
-	LoggedUser l(user.getUsername());
 
 	for (auto& i : m_users)
 	{
@@ -61,3 +60,7 @@ RoomData Room::getRoomData()
 	return this->m_metadata;
 }
 
+std::vector<LoggedUser> Room::get_sockets()
+{
+	return m_users;
+}

@@ -20,10 +20,10 @@ public:
 	LoginRequestHandler(RequestHandlerFactory fact, LoginManager man);
 	~LoginRequestHandler();
 	virtual bool isRequestRelevant(RequestInfo info);
-	virtual RequestResult handleRequest(RequestInfo info);
+	virtual RequestResult handleRequest(RequestInfo info, SOCKET clientSocket);
 private:
 	LoginManager& m_loginManager;
 	RequestHandlerFactory& m_handleFactory;
-	RequestResult login(RequestInfo info);
-	RequestResult signup(RequestInfo info);
+	RequestResult login(RequestInfo info, SOCKET clientSocket);
+	RequestResult signup(RequestInfo info, SOCKET clientSocket);
 };
