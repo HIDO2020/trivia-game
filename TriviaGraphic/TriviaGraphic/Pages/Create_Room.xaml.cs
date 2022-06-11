@@ -52,7 +52,7 @@ namespace TriviaGraphic
             int error = c.getRoomID(req);
             if (error != 0)
             {
-                Room roomPage = new Room(c, error);
+                Room roomPage = new Room(c, error, _roomName, _players, _questions, _time);
                 this.NavigationService.Navigate(roomPage);
             }
         }

@@ -104,11 +104,15 @@ namespace TriviaGraphic
 
         }
 
-        public Room(Communicator comm, int id)
+        public Room(Communicator comm, int id, string roomName, int players, int questions, int time)
         {
             InitializeComponent();
             c = comm;
-            //WaitingAdmin.Content = "Waiting For" + adminName + "To Start..";
+
+            _roomName.Content = roomName;
+            _players.Content = players;
+            _questions.Content = questions;
+            _time.Content = time;
 
             /*
                PARTICIPANTS LIST   
