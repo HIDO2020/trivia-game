@@ -45,6 +45,7 @@ RequestResult LoginRequestHandler::handleRequest(RequestInfo info, SOCKET client
 
 RequestResult LoginRequestHandler::login(RequestInfo info, SOCKET clientSocket)
 {
+	//m_loginManager.getUsers().
 	LoginResponse log_mes;
 	RequestResult res;
 	LoginRequest log_req = JsonRequestPacketDeserializer::deserializeLoginRequest(info.buffer);

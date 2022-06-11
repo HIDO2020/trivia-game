@@ -44,7 +44,7 @@ RequestResult RoomAdminRequestHandler::handleRequest(RequestInfo info,SOCKET cli
 RequestResult RoomAdminRequestHandler::closeRoom(RequestInfo info)
 {
 	MenuRequestHandler* menu = this->m_handleFactory.createMenuRequestHandler(m_user);
-	LeaveRoomResponse leave;
+	AdminLeaveRoomResponse leave;
 	leave.status = 1;
 	RequestResult res;
 	res.newHandler = &(*menu);
@@ -64,6 +64,7 @@ RequestResult RoomAdminRequestHandler::closeRoom(RequestInfo info)
 	vec = JsonResponsePacketSerializer::serializeResponse(close);
 
 	res.response = vec;
+	this->m_roomManager.deleteRoom(this->m_room.getRoomData()._RoomId);
 	return res;
 }
 
@@ -93,7 +94,8 @@ RequestResult RoomAdminRequestHandler::getRoomState(RequestInfo info)
 	GetRoomStateResponse state;
 	RoomData data = this->m_room.getRoomData();
 	state.hasGameBegun = data._Active;
-	state.players = this->m_room.getAllUsers();
+	//state.players = this->m_room.getAllUsers();
+	state.players = m_roomManager.getRoomInfo()->find(m_room.getRoomData()._RoomId)->second->getAllUsers();
 	state.answerTimeout = data._AvgTime;
 	state.questionCount = data.numOfQuestionsInGame; 
 	state.status = 1;

@@ -136,6 +136,13 @@ std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(Leave
 	return JsonResponsePacketSerializer::helper(j, code);
 }
 
+std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(AdminLeaveRoomResponse admin_leave_r)
+{
+	json j = { {"status", admin_leave_r.status} };
+	unsigned char code = '>';
+	return JsonResponsePacketSerializer::helper(j, code);
+
+}
 std::vector<unsigned char> JsonResponsePacketSerializer::helper(json j, int code)
 {
 	//unsigned char zer = '0';
@@ -144,9 +151,7 @@ std::vector<unsigned char> JsonResponsePacketSerializer::helper(json j, int code
 	std::string str_res = j.dump();
 
 	int size = str_res.size();
-	/*std::string size = std::to_string(str_res.size());
-	for (int i = 0; i < size.size(); i++)
-		res.push_back(size[i]);*/
+	
 	res.push_back(size);
 	while (res.size() < 5)
 		res.push_back(NULL);

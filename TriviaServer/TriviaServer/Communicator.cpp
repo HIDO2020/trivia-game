@@ -111,13 +111,14 @@ std::string Communicator::convertToString(char* a, int start, int end)
 void Communicator::handleNewClient(SOCKET clientSocket)
 {
 	std::vector<unsigned char> vec;
+	std::vector<std::vector<char>>* m_send;
+	std::thread connect(&Communicator::send_messages, m_send, clientSocket, 8826);
 	RequestResult res;
 	SignupRequest sign;
 	LoginRequest login;
 	RequestInfo info;
-	//LoginRequestHandler* log_handler = m_handlerFactory.createLoginRequestHandler();
+	
 	int len, count = 0;
-	//std::cout << "hi";
 
 	while (true)
 	{
@@ -150,17 +151,23 @@ void Communicator::handleNewClient(SOCKET clientSocket)
 
 		std::cout << "received: " << m << std::endl;
 
-		/*if (info.id == signup_)
-			sign = JsonRequestPacketDeserializer::deserializeSignupRequest(info.buffer);
-		else if (info.id == login_)
-			login = JsonRequestPacketDeserializer::deserializeLoginRequest(info.buffer);*/
-
 				//convert to char vector in order to send the message
 		std::vector<char> newOne = std::vector<char>(vec.begin(), vec.end());
 		for (int i = 0; i < newOne.size(); i++) {
 			std::cout << newOne[i];
 		}
 		send(clientSocket, &newOne[0], vec.size(), 0);
+	}
+}
+
+void Communicator::send_messages(std::vector<std::vector<char>>* m_message, SOCKET clientSocket)
+{
+	while (true)
+	{
+		if (m_message->size() > 0)
+		{
+			send(clientSocket, &(m_message->begin()->begin()), m_message->begin()->size(), 0);
+		}
 	}
 }
 

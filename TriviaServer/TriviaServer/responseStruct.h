@@ -81,3 +81,8 @@ struct LeaveRoomResponse
 {
     unsigned int status;
 };
+
+struct AdminLeaveRoomResponse
+{
+    unsigned int status;
+};

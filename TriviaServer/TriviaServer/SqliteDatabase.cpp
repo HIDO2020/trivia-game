@@ -291,7 +291,7 @@ std::vector<std::string> SqliteDatabase::getHighScores()
 bool SqliteDatabase::open()
 {
 	//open the database by file name
-	std::string dbFileName = "UserData.sqlite";
+	std::string dbFileName = "UserDataa.sqlite";
 	int file_exist = _access(dbFileName.c_str(), 0);
 	int res = sqlite3_open(dbFileName.c_str(), &db);
 	//check if exist

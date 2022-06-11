@@ -38,6 +38,7 @@ public:
 private:
 	void bindAndListen(int port);
 	void handleNewClient(SOCKET clientSocket);
+	void send_messages(std::vector<std::vector<char>>* m_message, SOCKET clientSocket);
 
 	std::map<SOCKET, IRequestHandler*> m_clients;
 	RequestHandlerFactory& m_handlerFactory;

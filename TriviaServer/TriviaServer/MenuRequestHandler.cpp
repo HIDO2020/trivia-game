@@ -137,15 +137,17 @@ RequestResult MenuRequestHandler::getHighScore(RequestInfo)
 RequestResult MenuRequestHandler::joinRoom(RequestInfo info)
 {
 	JoinRoomResponse join_res;
-	join_res.status = 1;
 
 	JoinRoomRequest req = JsonRequestPacketDeserializer::deserializeJoinRoomRequest(info.buffer);
 
 	auto it = m_roomManager.getRoomInfo()->find(req.roomId);
-	it->second->addUser(m_user.getUser());
+	if (it->second->addUser(m_user))
+		join_res.status = 1;
+	else
+		join_res.status = 0;
 	
 	RequestResult res;
-	res.newHandler = this;
+	res.newHandler = m_handleFactory.createRoomMemberRequestHandler(m_user, *(it->second));
 
 	std::vector<unsigned char> vec = JsonResponsePacketSerializer::serializeResponse(join_res);
 	res.response = vec;
@@ -159,12 +161,14 @@ RequestResult MenuRequestHandler::createRoom(RequestInfo info)
 	CreateRoomRequest create = JsonRequestPacketDeserializer::deserializeCreateRoomRequest(info.buffer);
 
 	RoomData new_data;
+	new_data.numOfQuestionsInGame = create.questionCount;
 	new_data._Active = 0;
 	new_data._AvgTime = create.answerTimeout;
 	new_data._MaxPlayers = create.maxUsers;
 	new_data._RoomId = id_count;
 	new_data._RoomName = create.roomName;
 	Room new_room = m_roomManager.createRoom(create.roomName, new_data);
+	//new_room.addUser(m_user);
 	//RoomAdminRequestHandler(this->m_handleFactory, this->m_user, this->m_roomManager, new_room);
 
 	RequestResult res;

@@ -7,7 +7,7 @@
 #include "responseStruct.h"
 using json = nlohmann::json;
 enum codes{Error_, signup_, login_, logout_, join_, create_, getRoom_, getPlayers_, getHighScore_, getPersonalStats_,
-	close_r_, start_g_, get_state_, leave_r_};
+	close_r_, start_g_, get_state_, leave_r_, admin_leave_};
 
 class JsonResponsePacketSerializer
 {
@@ -28,6 +28,8 @@ public:
 	 static std::vector<unsigned char> serializeResponse(StartGameResponse start_g);
 	 static std::vector<unsigned char> serializeResponse(GetRoomStateResponse get_state);
 	 static std::vector<unsigned char> serializeResponse(LeaveRoomResponse leave_r);
+
+	 static std::vector<unsigned char> serializeResponse(AdminLeaveRoomResponse admin_leave_r); //added
 private:
 	static std::vector<unsigned char> helper(json j, int code);
 };
