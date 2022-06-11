@@ -26,7 +26,7 @@ namespace TriviaGraphic
         string answer;
         string adminName = "##";
         Communicator c;
-        List<Label> items = new List<Label>();
+        List<string> items = new List<string>();
         private BackgroundWorker background_worker = new BackgroundWorker();
         string[] _names = new string[9];
 
@@ -47,16 +47,20 @@ namespace TriviaGraphic
         void background_worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             int i = 0;
-            items.Clear();
             while (i < _names.Length)
             {
                 var user = new Label { Content = _names[i] };
                 user.FontSize = 18;
-                if (user.Content != null)
-                    items.Add(user);
+                if (user.Content != null )
+                {
+                    if (!(items.Contains((string)user.Content)))
+                    {
+                        Players_List.Items.Add(user);
+                        items.Add((string)user.Content);
+                    }
+                }
                 i++;
             }
-            Players_List.ItemsSource = items;
             WaitingAdmin.Content = "Waiting For " + adminName + " To Start..";
         }
 
@@ -89,7 +93,7 @@ namespace TriviaGraphic
                     break;
                 }
 
-                while (i < result.Count() - 1)
+                while (i < result.Count())
                 {
                     _names[j] = result[i];
                     i += 2;
@@ -97,7 +101,7 @@ namespace TriviaGraphic
                 }
                 //Players_List.ItemsSource = items;
                 background_worker.ReportProgress(_names.Length);
-                Thread.Sleep(10000);        //wait 10 sec..
+                Thread.Sleep(3000);        //wait 10 sec..
             }
 
         }
