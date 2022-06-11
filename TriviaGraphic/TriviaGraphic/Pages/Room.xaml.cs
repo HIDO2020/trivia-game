@@ -26,7 +26,7 @@ namespace TriviaGraphic
         string answer;
         string adminName = "##";
         Communicator c;
-        List<string> items = new List<string>();
+        Dictionary <string, Label> items = new Dictionary<string, Label>();
         private BackgroundWorker background_worker = new BackgroundWorker();
         string[] _names = new string[9];
 
@@ -52,13 +52,22 @@ namespace TriviaGraphic
                 user.FontSize = 18;
                 if (user.Content != null)
                 {
-                    if (!(items.Contains((string)user.Content)))
+                    if (!(items.ContainsKey((string)user.Content)))
                     {
                         Players_List.Items.Add(user);
-                        items.Add((string)user.Content);
+                        items.Add((string)user.Content, user);
                     }
                 }
                 i++;
+            }
+            WaitingAdmin.Content = "Waiting For " + adminName + " To Start..";
+            foreach (var item in items.Values.ToList())
+            {
+                if (!(_names.Contains(item.Content)))
+                {
+                    Players_List.Items.Remove(item);
+                    items.Remove((string)item.Content);
+                }
             }
         }
 
@@ -70,6 +79,8 @@ namespace TriviaGraphic
             int j = 0;
             while (true)
             {
+                i = 0;
+                j = 0;
                 if (background_worker.CancellationPending)
                 {
                     e.Cancel = true;
@@ -85,7 +96,7 @@ namespace TriviaGraphic
 
                 adminName = result[0];
 
-                if (result.Count() == 22)
+                if (result.Count() >= 22)
                 {
                     e.Cancel = true;
                     break;
@@ -97,9 +108,14 @@ namespace TriviaGraphic
                     i += 2;
                     j++;
                 }
+                while (j < 9)
+                {
+                    _names[j] = null;
+                    j++;
+                }
                 //Players_List.ItemsSource = items;
                 background_worker.ReportProgress(_names.Length);
-                Thread.Sleep(20000);        //wait 10 sec..
+                Thread.Sleep(3000);        //wait 10 sec..
             }
 
         }
@@ -120,7 +136,7 @@ namespace TriviaGraphic
 
             GetPlayersInRoomRequest log = new GetPlayersInRoomRequest { id = id };
             req = c.getPlayersAdminSe(log);
-            MessageBox.Show(req);
+            //MessageBox.Show(req);
 
 
             //Thread ts1 = new Thread(updateData);

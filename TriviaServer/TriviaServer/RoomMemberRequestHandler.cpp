@@ -40,7 +40,8 @@ RequestResult RoomMemberRequestHandler::handleRequest(RequestInfo info, SOCKET c
 
 RequestResult RoomMemberRequestHandler::leaveRoom(RequestInfo info)
 {
-	this->m_room.removeUser(this->m_user);
+	//this->m_room.removeUser(this->m_user);
+	this->m_roomManager.getRoomInfo().find(m_room.getRoomData()._RoomId)->second->removeUser(this->m_user);
 	MenuRequestHandler* menu = m_handleFactory.createMenuRequestHandler(this->m_user);
 	RequestResult res;
 	res.newHandler = &(*menu);

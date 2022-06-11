@@ -158,7 +158,7 @@ std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(Leave
 std::vector<unsigned char> JsonResponsePacketSerializer::serializeResponse(AdminLeaveRoomResponse admin_leave_r)
 {
 	json j = { {"status", admin_leave_r.status} };
-	unsigned char code = (unsigned char)admin_leave_;
+	unsigned char code = '>';
 	return JsonResponsePacketSerializer::helper(j, code);
 
 }
