@@ -18,7 +18,7 @@ bool LoginRequestHandler::isRequestRelevant(RequestInfo info)
 	return false;
 }
 
-RequestResult LoginRequestHandler::handleRequest(RequestInfo info) //need to change and return 
+RequestResult LoginRequestHandler::handleRequest(RequestInfo info, SOCKET clientSocket) //need to change and return 
 {
 	ErrorResponse err_mes;
 	err_mes.message = "Error!";
@@ -28,11 +28,11 @@ RequestResult LoginRequestHandler::handleRequest(RequestInfo info) //need to cha
 	{
 		if (info.id == signup_)
 		{
-			return signup(info);
+			return signup(info, clientSocket);
 		}
 		else
 		{
-			return login(info);
+			return login(info, clientSocket);
 		}
 	}
 	else
@@ -43,15 +43,15 @@ RequestResult LoginRequestHandler::handleRequest(RequestInfo info) //need to cha
 	return result;
 }
 
-RequestResult LoginRequestHandler::login(RequestInfo info)
+RequestResult LoginRequestHandler::login(RequestInfo info, SOCKET clientSocket)
 {
 	LoginResponse log_mes;
 	RequestResult res;
 	LoginRequest log_req = JsonRequestPacketDeserializer::deserializeLoginRequest(info.buffer);
-	LoggedUser user(log_req.username);
+	LoggedUser user(log_req.username, clientSocket);
 	MenuRequestHandler* menu = this->m_handleFactory.createMenuRequestHandler(user);
 
-	if (m_loginManager.LogIn(log_req.username, log_req.password))
+	if (m_loginManager.LogIn(log_req.username, log_req.password, clientSocket))
 	{
 		log_mes.status = 1;
 		res.newHandler = &(*menu);
@@ -67,13 +67,13 @@ RequestResult LoginRequestHandler::login(RequestInfo info)
 	return res;
 }
 
-RequestResult LoginRequestHandler::signup(RequestInfo info)
+RequestResult LoginRequestHandler::signup(RequestInfo info, SOCKET clientSocket)
 {
 	RequestResult res;
 	SignupResponse sign_mes;
 	SignupRequest sign_req = JsonRequestPacketDeserializer::deserializeSignupRequest(info.buffer);
 
-	LoggedUser user(sign_req.username);
+	LoggedUser user(sign_req.username, clientSocket);
 	MenuRequestHandler* menu = this->m_handleFactory.createMenuRequestHandler(user);
 
 	if (m_loginManager.SignUp(sign_req.username, sign_req.password, sign_req.email))

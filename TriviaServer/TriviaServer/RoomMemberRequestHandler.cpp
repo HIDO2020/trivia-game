@@ -12,7 +12,7 @@ bool RoomMemberRequestHandler::isRequestRelevant(RequestInfo info)
 	return false;
 }
 
-RequestResult RoomMemberRequestHandler::handleRequest(RequestInfo info)
+RequestResult RoomMemberRequestHandler::handleRequest(RequestInfo info, SOCKET clientSocket)
 {
 	ErrorResponse err_mes;
 	err_mes.message = "Error!";

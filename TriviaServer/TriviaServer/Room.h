@@ -34,6 +34,7 @@ public:
 	unsigned int getRoomState();
 	RoomData getRoomData();
 	//std::map<SOCKET, std::string> get_socket();
+	std::vector<LoggedUser> get_sockets();
 
 private:
 	RoomData m_metadata;

@@ -8,7 +8,7 @@ class RoomMemberRequestHandler : public IRequestHandler
 public:
 	RoomMemberRequestHandler(RequestHandlerFactory& fact, LoggedUser user, RoomManager& room_manage, Room room);
 	virtual bool isRequestRelevant(RequestInfo info);
-	virtual RequestResult handleRequest(RequestInfo info);
+	virtual RequestResult handleRequest(RequestInfo info,SOCKET clientSocket);
 
 private:
 	Room m_room;

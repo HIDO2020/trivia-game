@@ -9,12 +9,12 @@
 class LoggedUser
 {
 public:	
-	LoggedUser(std::string m_username);
+	LoggedUser(std::string m_username, SOCKET s);
 	LoggedUser getUser();
 	std::string getUsername();
-
+	SOCKET get_socket();
 private:
 	std::string m_username;
-	SOCKET s;
+	SOCKET socket;
 };
 #endif

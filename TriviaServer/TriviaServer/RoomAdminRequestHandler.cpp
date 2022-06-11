@@ -12,7 +12,7 @@ bool RoomAdminRequestHandler::isRequestRelevant(RequestInfo info)
 	return false;
 }
 
-RequestResult RoomAdminRequestHandler::handleRequest(RequestInfo info)
+RequestResult RoomAdminRequestHandler::handleRequest(RequestInfo info,SOCKET clientSocket)
 {
 	ErrorResponse err_mes;
 	err_mes.message = "Error!";
@@ -43,12 +43,49 @@ RequestResult RoomAdminRequestHandler::handleRequest(RequestInfo info)
 
 RequestResult RoomAdminRequestHandler::closeRoom(RequestInfo info)
 {
-	return RequestResult();
+	MenuRequestHandler* menu = this->m_handleFactory.createMenuRequestHandler(m_user);
+	LeaveRoomResponse leave;
+	leave.status = 1;
+	RequestResult res;
+	res.newHandler = &(*menu);
+
+	std::vector<unsigned char> vec = JsonResponsePacketSerializer::serializeResponse(leave);
+
+	std::vector<char> newOne = std::vector<char>(vec.begin(), vec.end()); //to send
+	for (auto i : m_room.get_sockets())
+	{
+		if(i.get_socket() != this->m_user.get_socket())
+			send(i.get_socket(), &newOne[0], vec.size(), 0);
+	}
+
+	//creating this admin response
+	CloseRoomResponse close;
+	close.status = 1;
+	vec = JsonResponsePacketSerializer::serializeResponse(close);
+
+	res.response = vec;
+	return res;
 }
 
 RequestResult RoomAdminRequestHandler::startGame(RequestInfo info)
 {
-	return RequestResult();
+	StartGameResponse start;
+	start.status = 1;
+	RequestResult res;
+	res.newHandler = this;
+
+	std::vector<unsigned char> vec = JsonResponsePacketSerializer::serializeResponse(start);
+
+	std::vector<char> newOne = std::vector<char>(vec.begin(), vec.end()); //to send
+	for (auto i : m_room.get_sockets())
+	{
+		if (i.get_socket() != this->m_user.get_socket())
+			send(i.get_socket(), &newOne[0], vec.size(), 0);
+	}
+
+	//creating this admin response
+	res.response = vec;
+	return res;
 }
 
 RequestResult RoomAdminRequestHandler::getRoomState(RequestInfo info)

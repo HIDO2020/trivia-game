@@ -69,6 +69,11 @@ RoomData Room::getRoomData()
 	return this->m_metadata;
 }
 
+std::vector<LoggedUser> Room::get_sockets()
+{
+	return m_users;
+}
+
 //std::map<SOCKET, std::string> Room::get_socket()
 //{
 //	return m_socket;

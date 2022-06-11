@@ -14,7 +14,7 @@ bool MenuRequestHandler::isRequestRelevant(RequestInfo info)
 	return false;
 }
 
-RequestResult MenuRequestHandler::handleRequest(RequestInfo info)
+RequestResult MenuRequestHandler::handleRequest(RequestInfo info,SOCKET clientSocket)
 {
 	ErrorResponse err_mes;
 	err_mes.message = "Error!";
@@ -95,7 +95,7 @@ RequestResult MenuRequestHandler::getPlayersInRooms(RequestInfo info)
 {
 	GetPlayersInRoomResponse get_play;
 	GetPlayersInRoomRequest req = JsonRequestPacketDeserializer::deserializeGetPlayesRequest(info.buffer);
-	auto it = m_roomManager.getRoomInfo().find(req.roomId);
+	auto it = m_roomManager.getRoomInfo()->find(req.roomId);
 
 	get_play.players = it->second->getAllUsers();
 	RequestResult res;
@@ -141,7 +141,7 @@ RequestResult MenuRequestHandler::joinRoom(RequestInfo info)
 
 	JoinRoomRequest req = JsonRequestPacketDeserializer::deserializeJoinRoomRequest(info.buffer);
 
-	auto it = m_roomManager.getRoomInfo().find(req.roomId);
+	auto it = m_roomManager.getRoomInfo()->find(req.roomId);
 	it->second->addUser(m_user.getUser());
 	
 	RequestResult res;
