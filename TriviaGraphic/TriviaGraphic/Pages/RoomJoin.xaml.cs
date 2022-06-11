@@ -61,6 +61,7 @@ namespace TriviaGraphic
 
         void updateData(object sender, DoWorkEventArgs e)
         {
+            Thread.Sleep(3000);        //wait 10 sec..
             int i = 0;
             int j = 0;
             while (true)
@@ -88,8 +89,9 @@ namespace TriviaGraphic
                 }
                 //Players_List.ItemsSource = items;
                 background_worker.ReportProgress(_names.Length);
+                Thread.Sleep(10000);        //wait 10 sec..
             }
-            Thread.Sleep(10000);        //wait 10 sec..
+
         }
 
         public RoomJoin(Communicator comm, int id)
