@@ -47,11 +47,13 @@ namespace TriviaGraphic
         void background_worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             int i = 0;
+            items.Clear();
             while (i < _names.Length)
             {
                 var user = new Label { Content = _names[i] };
                 user.FontSize = 18;
-                items.Add(user);
+                if (user.Content != null)
+                    items.Add(user);
                 i++;
             }
             Players_List.ItemsSource = items;
@@ -81,7 +83,13 @@ namespace TriviaGraphic
 
                 adminName = result[0];
 
-                while (i < result.Count())
+                if (result.Count() == 22)
+                {
+                    e.Cancel = true;
+                    break;
+                }
+
+                while (i < result.Count() - 1)
                 {
                     _names[j] = result[i];
                     i += 2;
