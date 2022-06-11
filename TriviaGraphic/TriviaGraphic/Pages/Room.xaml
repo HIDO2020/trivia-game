@@ -61,7 +61,7 @@
                 <Button BorderBrush="#FFDDEFBB" BorderThickness="3"  FontSize="20" Content="Start" Height="45" Margin="185,350,185,0" VerticalAlignment="Top"  Background="White" FontWeight="Bold"/>
                 <Button BorderBrush="#FFF9E1E1" BorderThickness="3"  FontSize="20" Content="Close" Height="45" Margin="210,300,210,0" VerticalAlignment="Top"  Background="White" FontWeight="Bold" Click="Button_Click"/>
             </Grid>
-            <Label x:Name="_roomName" HorizontalContentAlignment="Center" Content="" Height="91" Margin="250,10,250,0" VerticalAlignment="Top" FontSize="50" FontWeight="Bold"/>
+            <Label x:Name="_roomName" HorizontalContentAlignment="Center" Content="" Height="91" Margin="200,10,200,0" VerticalAlignment="Top" FontSize="50" FontWeight="Bold"/>
 
         </Grid>
 

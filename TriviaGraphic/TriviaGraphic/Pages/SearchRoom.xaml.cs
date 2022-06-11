@@ -60,6 +60,7 @@ namespace TriviaGraphic
             List<Button> items = new List<Button>();
             for (int i = 5; i < result.ToArray().Length; i += 6)
             {
+                tags = "";
                 _ID = result[i - 3].Remove(0, 1);
                 _ID = _ID.Remove(_ID.Length - 1);
                 _NAME = result[i];

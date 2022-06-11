@@ -115,7 +115,7 @@ namespace TriviaGraphic
 
             JoinRoomRequest logJ = new JoinRoomRequest { id = id };
             req = c.JoinRoomSe(logJ);
-            MessageBox.Show(req);
+            //MessageBox.Show(req);
             answer = c.getData(req);
 
             roomName.Content = room_name;
