@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -25,13 +26,52 @@ namespace TriviaGraphic
         string answer;
         string adminName = "##";
         Communicator c;
+        List<Label> items = new List<Label>();
+        private BackgroundWorker background_worker = new BackgroundWorker();
+        string[] _names = new string[9];
 
-        public void updateData()
+
+        void background_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            while (true)
-            { 
-                answer = c.getData(req);
+            if (e.Cancelled)
+            {
+                MessageBox.Show("BackgroundWorker canceled");
+            }
+            else
+            {
+                MessageBox.Show("BackgroundWorker ended successfully");
+            }
+        }
 
+
+        void background_worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            int i = 0;
+            while (i < _names.Length)
+            {
+                var user = new Label { Content = _names[i] };
+                user.FontSize = 18;
+                items.Add(user);
+                i++;
+            }
+            Players_List.ItemsSource = items;
+            WaitingAdmin.Content = "Waiting For " + adminName + " To Start..";
+        }
+
+
+        void updateData(object sender, DoWorkEventArgs e)
+        {
+            int i = 0;
+            int j = 0;
+            while (true)
+            {
+                if (background_worker.CancellationPending)
+                {
+                    e.Cancel = true;
+                    break;
+                }
+                answer = c.getData(req);
+                //MessageBox.Show(answer);
                 List<string> result = answer.Split('"')
                     .Select((element, index) => index % 2 == 0  // If even index
                                   ? element.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)  // Split the item
@@ -39,19 +79,17 @@ namespace TriviaGraphic
                     .SelectMany(element => element).ToList();
 
                 adminName = result[0];
-                Dispatcher.Invoke(new Action(() => { }), WaitingAdmin.Content = "Waiting For " + adminName + " To Start.."); 
-                List<Label> items = new List<Label>();
-                for (int i = 0; i < result.Count(); i += 2)
-                {
-                    var user = new Label { Content = result[i] };
-                    user.FontSize = 18;
-                    items.Add(user);
-                }
-                Dispatcher.Invoke(new Action(() => { }), Players_List.ItemsSource = items);
 
-                
-                System.Threading.Thread.Sleep(3000);        //wait 3 sec..
+                while (i < result.Count())
+                {
+                    _names[j] = result[i];
+                    i += 2;
+                    j++;
+                }
+                //Players_List.ItemsSource = items;
+                background_worker.ReportProgress(_names.Length);
             }
+            Thread.Sleep(10000);        //wait 10 sec..
         }
 
         public RoomJoin(Communicator comm, int id)
@@ -63,13 +101,20 @@ namespace TriviaGraphic
             GetPlayersInRoomRequest log = new GetPlayersInRoomRequest { id = id };
             req = c.getPlayersSe(log);
             MessageBox.Show(req);
-            /*
-                Fix Thread
-            */
+
+
             //Thread ts1 = new Thread(updateData);
             //ts1.SetApartmentState(ApartmentState.STA);
             //ts1.Start();
+            background_worker.ProgressChanged += background_worker_ProgressChanged;
+            background_worker.DoWork += updateData;
+            background_worker.RunWorkerCompleted += background_worker_RunWorkerCompleted;
 
+            background_worker.RunWorkerAsync();
+            background_worker.WorkerSupportsCancellation = true;
+            background_worker.WorkerReportsProgress = true;
+
+            //MessageBox.Show("tryyyy");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
