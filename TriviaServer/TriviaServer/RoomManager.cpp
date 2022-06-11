@@ -10,7 +10,7 @@ RoomManager::RoomManager()
 RoomManager::~RoomManager()
 {
 	this->_AmountOoRooms = 0;
-	this->m_rooms->clear();
+	//this->m_rooms->clear();
 }
 
 void RoomManager::createRoom(LoggedUser name, RoomData data)

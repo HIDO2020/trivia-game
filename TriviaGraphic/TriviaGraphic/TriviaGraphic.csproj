@@ -196,9 +196,6 @@
     <Folder Include="Pictures\" />
     <Folder Include="Themes\" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pages\refresh_icon.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.4\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.4\build\System.Text.Json.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

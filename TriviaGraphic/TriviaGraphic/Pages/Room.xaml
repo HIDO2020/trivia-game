@@ -26,7 +26,6 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Rectangle Height="50" Width="250" Margin="165,100"/>
                 <ListBox BorderThickness="0" HorizontalAlignment="Left"  Height="245" Margin="10,0,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" Opacity="100">
                     <Image Source="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\trio_user.png" Height="60" Width="60"/>
                     <Rectangle Height="10" Width="60"/>

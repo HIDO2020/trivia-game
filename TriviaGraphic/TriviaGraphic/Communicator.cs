@@ -34,6 +34,17 @@ namespace TriviaGraphic
         public int answer_timeout { get; set; }
     };
 
+    public struct GetPlayersInRoomRequest
+    {
+        public int id { get; set; }
+    };
+
+    public struct JoinRoomRequest
+    {
+        public int id { get; set; }
+    };
+
+
 
 
     public class Communicator
@@ -169,6 +180,30 @@ namespace TriviaGraphic
                 answer_timeout = log.answer_timeout
             };
             string jsonString = JsonSerializer.Serialize<CreateRoomRequest>(createRoomRequest);
+            //return jsonString;
+            return helper(jsonString, code);
+        }
+
+        public string JoinRoomSe(JoinRoomRequest log)
+        {
+            int code = (int)codes.join_;
+            var joinRoomRequest = new JoinRoomRequest
+            {
+                id = log.id
+            };
+            string jsonString = JsonSerializer.Serialize<JoinRoomRequest>(joinRoomRequest);
+            //return jsonString;
+            return helper(jsonString, code);
+        }
+
+        public string getPlayersSe(GetPlayersInRoomRequest log)
+        {
+            int code = (int)codes.getPlayers_;
+            var getPlayersInRoomRequest = new GetPlayersInRoomRequest
+            {
+                id = log.id
+            };
+            string jsonString = JsonSerializer.Serialize<GetPlayersInRoomRequest>(getPlayersInRoomRequest);
             //return jsonString;
             return helper(jsonString, code);
         }

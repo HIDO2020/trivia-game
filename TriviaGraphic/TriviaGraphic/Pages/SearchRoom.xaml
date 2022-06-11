@@ -25,23 +25,15 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Rectangle Height="50" Width="250" Margin="165,100"/>
-                <ListBox BorderThickness="1" Margin="165,10" BorderBrush="#000000" Opacity="100">
-                    <Label  FontWeight="Bold" FontSize="20" Content="" Height="35" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
-                    <Label  FontWeight="Bold" FontSize="16" Content="" Height="33" Width="235"   ></Label>
+                <ListBox x:Name="RoomsList" BorderThickness="1" Margin="165,10,165,50" BorderBrush="#000000" Opacity="100">
+
                 </ListBox>
             </Grid>
             <Label HorizontalContentAlignment="Center" Content="Room List" Height="91" Margin="250,10,250,0" VerticalAlignment="Top" FontSize="50" FontWeight="Bold"/>
-            <Button x:Name="WaitingAdmin" BorderBrush="#FFDDEFBB" BorderThickness="3"  FontSize="20" Content="Join" Height="35" Margin="505,485,210,-415" VerticalAlignment="Top"  Background="White" FontWeight="Bold" />
-            <Button  Height="50" Margin="415,485,415,-430" VerticalAlignment="Top" RenderTransformOrigin="1.083,0.364" >
+            <Button x:Name="WaitingAdmin" BorderBrush="#FFDDEFBB" BorderThickness="3"  FontSize="20" Content="Join" Height="35" Margin="505,485,210,-415" VerticalAlignment="Top"  Background="White" FontWeight="Bold" Click="JoinRoom" />
+            <Button  Height="50" Margin="415,485,415,-430" VerticalAlignment="Top" RenderTransformOrigin="1.083,0.364" Click="Refresh" >
                 <Button.Background>
-                    <ImageBrush ImageSource="refresh_icon.png"/>
+                    <ImageBrush ImageSource="E:\cyber\magshimim\Y2\c++\Semester B\trivia_nativ_ido\TriviaGraphic\TriviaGraphic\Pictures\refresh_icon.png"/>
                 </Button.Background>
             </Button>
             <Button BorderBrush="#FFF9E1E1" BorderThickness="3"  FontSize="20" Content="Back" Height="35" Margin="210,485,505,-415" VerticalAlignment="Top"  Background="White" FontWeight="Bold" Click="Button_Click"/>

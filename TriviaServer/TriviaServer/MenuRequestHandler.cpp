@@ -95,9 +95,10 @@ RequestResult MenuRequestHandler::getPlayersInRooms(RequestInfo info)
 {
 	GetPlayersInRoomResponse get_play;
 	GetPlayersInRoomRequest req = JsonRequestPacketDeserializer::deserializeGetPlayesRequest(info.buffer);
-	auto it = m_roomManager.getRoomInfo().find(req.roomId);
-
-	get_play.players = it->second->getAllUsers();
+	//auto it = m_roomManager.getRoomInfo().find(int(req.roomId));
+	//if (it != m_roomManager.getRoomInfo().end())
+	//	get_play.players = it->second->getAllUsers();
+	get_play.players = m_roomManager.getRoomInfo().find(req.roomId)->second->getAllUsers();
 	RequestResult res;
 	res.newHandler = this;
 
@@ -141,8 +142,7 @@ RequestResult MenuRequestHandler::joinRoom(RequestInfo info)
 
 	JoinRoomRequest req = JsonRequestPacketDeserializer::deserializeJoinRoomRequest(info.buffer);
 
-	auto it = m_roomManager.getRoomInfo().find(req.roomId);
-	it->second->addUser(m_user.getUser());
+	m_roomManager.getRoomInfo().find(req.roomId)->second->addUser(m_user.getUser());
 	
 	RequestResult res;
 	res.newHandler = this;

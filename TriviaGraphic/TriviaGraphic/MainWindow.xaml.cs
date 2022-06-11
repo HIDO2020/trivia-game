@@ -20,7 +20,13 @@ namespace TriviaGraphic
     /// </summary>
     public partial class MainWindow : Window
     {
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
 
+            // Begin dragging the window
+            this.DragMove();
+        }
 
         public MainWindow()
         {
